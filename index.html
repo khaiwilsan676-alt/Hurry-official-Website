@@ -42,7 +42,7 @@
 
         /* 🎬 HURRY Letters & Plane Drop Animation */
         
-        /* 'u-r-r-y' falling animation */
+        /* Falling animation for letters */
         @keyframes dropLetter {
             0% {
                 opacity: 0;
@@ -60,34 +60,34 @@
             align-items: center;
         }
 
-        /* 'u', 'r', 'r', 'y' dropping sequence */
+        /* 'u', 'r', 'r', 'y' dropping sequence (1 second gap each) */
         .hurry-title .letter-u {
             opacity: 0;
-            animation: dropLetter 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.8s forwards;
+            animation: dropLetter 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.4s forwards;
         }
         .hurry-title .letter-r1 {
             opacity: 0;
-            animation: dropLetter 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) 2.1s forwards;
+            animation: dropLetter 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.4s forwards;
         }
         .hurry-title .letter-r2 {
             opacity: 0;
-            animation: dropLetter 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) 2.4s forwards;
+            animation: dropLetter 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) 2.4s forwards;
         }
         .hurry-title .letter-y {
             opacity: 0;
-            animation: dropLetter 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) 2.7s forwards;
+            animation: dropLetter 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) 3.4s forwards;
         }
 
-        /* ✈️ Plane carrying 'H' from Right to Left */
+        /* ✈️ Plane carrying 'H' from Right to Left (Starts last, takes exactly 3s) */
         @keyframes flyPlane {
             0% {
-                transform: translateX(110vw);
+                transform: translateX(115vw);
                 opacity: 0;
             }
-            15% {
+            10% {
                 opacity: 1;
             }
-            85% {
+            90% {
                 opacity: 1;
             }
             100% {
@@ -112,28 +112,29 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            animation: flyPlane 3s linear forwards;
+            opacity: 0;
+            animation: flyPlane 3s cubic-bezier(0.4, 0, 0.2, 1) 4.2s forwards;
         }
 
-        /* 'H' drop and fix animation */
+        /* 'H' drops last when plane passes */
         @keyframes dropH {
             0% {
                 opacity: 0;
-                transform: translateY(-50px);
+                transform: translateY(-60px) scale(1.3);
             }
-            60% {
+            65% {
                 opacity: 1;
-                transform: translateY(5px);
+                transform: translateY(6px) scale(0.95);
             }
             100% {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
             }
         }
 
         .hurry-title .letter-h {
             opacity: 0;
-            animation: dropH 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.4s forwards;
+            animation: dropH 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275) 5.3s forwards;
         }
     </style>
 </head>
@@ -149,17 +150,25 @@
         <div class="absolute -bottom-40 left-1/2 h-[500px] w-[120vw] -translate-x-1/2 rounded-[50%] bg-blue-600/25 blur-[150px]"></div>
     </div>
 
-    <!-- ✈️ Plane flying right to left carrying 'H' right below the top navbar -->
+    <!-- ✈️ Modern White Sleek Plane flying right to left -->
     <div class="plane-container">
         <div class="flying-plane">
-            <!-- Mini Claw/Hook dropping H -->
-            <div class="text-xs text-blue-400 font-mono bg-blue-950/80 px-2 py-1 rounded border border-blue-500/30 flex items-center gap-1 shadow-lg">
-                <span>⚡ H-Dropper</span>
+            <!-- Sleek Left-facing White Jet Plane -->
+            <div class="relative flex items-center">
+                <svg class="w-10 h-10 text-white drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]" viewBox="0 0 24 24" fill="currentColor">
+                    <!-- Left facing jet craft -->
+                    <path d="M2.5 12L9 8v3l8-3.5v2L11 12l6 2.5v2L9 13v3l-6.5-4z"/>
+                    <path d="M17 10.5h4.5c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5H17v-3z" opacity="0.8"/>
+                </svg>
+                <!-- Tail Thruster Glow trailing to the right -->
+                <div class="w-8 h-[2px] bg-gradient-to-r from-white via-blue-400 to-transparent blur-[1px]"></div>
             </div>
-            <!-- Plane Icon / Object -->
-            <svg class="w-8 h-8 text-blue-500 drop-shadow-[0_0_10px_rgba(37,99,235,0.8)] transform -scale-x-100" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
-            </svg>
+
+            <!-- Mini Tag dropping H -->
+            <div class="text-[11px] text-white font-mono bg-white/10 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/30 flex items-center gap-1 shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                <span class="text-blue-400 font-bold">✈</span>
+                <span>H-Drop</span>
+            </div>
         </div>
     </div>
 
@@ -486,3 +495,4 @@
     </script>
 </body>
 </html>
+
