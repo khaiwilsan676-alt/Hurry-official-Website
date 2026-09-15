@@ -4,633 +4,261 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hurry - Party Rooms Chat</title>
-
+    <!-- Tailwind CSS for replicating the UI -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800;900&display=swap" rel="stylesheet">
-
+    
     <style>
+        /* Body background is Pure Black */
         body {
-            background-color: #000000;
+            background-color: #000000; 
             color: #fff;
             font-family: 'Poppins', sans-serif;
             margin: 0;
             overflow-x: hidden;
         }
-
         html {
             scroll-behavior: smooth;
             background-color: #000000;
         }
 
-        /* =====================================================
-           GEMINI STYLE TOP BLUE AMBIENT LIGHT
-           ===================================================== */
-
-        body::before {
-            content: "";
-            position: fixed;
-            top: -180px;
-            left: 50%;
-            width: 1000px;
-            height: 430px;
-            transform: translateX(-50%);
-            pointer-events: none;
-            z-index: 0;
-
-            background: radial-gradient(
-                ellipse at center,
-                rgba(70, 130, 255, 0.20) 0%,
-                rgba(55, 115, 255, 0.12) 28%,
-                rgba(35, 90, 255, 0.05) 52%,
-                transparent 75%
-            );
-
-            filter: blur(45px);
-        }
-
-        header,
-        main,
-        footer {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* =====================================================
-           GEMINI STYLE LIGHT ON TOP OF ALL BIG CARDS
-           ===================================================== */
-
-        section {
-            isolation: isolate;
-        }
-
-        section::before {
-            content: "";
-            position: absolute;
-            top: -100px;
-            left: 50%;
-            width: 80%;
-            height: 190px;
-            transform: translateX(-50%);
-            pointer-events: none;
-            z-index: 0;
-
-            background: radial-gradient(
-                ellipse at center,
-                rgba(65, 125, 255, 0.13) 0%,
-                rgba(55, 115, 255, 0.07) 35%,
-                transparent 72%
-            );
-
-            filter: blur(35px);
-        }
-
-        /* =====================================================
-           MOBILE SCROLL ANIMATION
-           ===================================================== */
-
+        /* 4th Card Mobile Scroll Animation */
         @keyframes scrollMobile {
-            0%, 20% {
-                transform: translateY(0);
-            }
-
-            25%, 45% {
-                transform: translateY(-100%);
-            }
-
-            50%, 70% {
-                transform: translateY(-200%);
-            }
-
-            75%, 95% {
-                transform: translateY(-300%);
-            }
-
-            100% {
-                transform: translateY(0);
-            }
+            0%, 20% { transform: translateY(0); }          /* Image 1 */
+            25%, 45% { transform: translateY(-100%); }     /* Image 2 */
+            50%, 70% { transform: translateY(-200%); }     /* Image 3 */
+            75%, 95% { transform: translateY(-300%); }     /* Image 4 */
+            100% { transform: translateY(0); }             /* Back to Image 1 */
         }
-
         .animate-scrollMobile {
             animation: scrollMobile 20s infinite ease-in-out;
         }
 
-        /* =====================================================
-           HONOUR EVENTS IMAGE
-           TOP + BOTTOM BOTH FADE INTO CARD
-           ===================================================== */
-
-        .honour-image-fade {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        .honour-image-fade::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            z-index: 2;
-
-            background: linear-gradient(
-                to bottom,
-                #0a0a0a 0%,
-                rgba(10, 10, 10, 0.88) 4%,
-                rgba(10, 10, 10, 0.40) 12%,
-                transparent 25%,
-                transparent 70%,
-                rgba(10, 10, 10, 0.35) 82%,
-                rgba(10, 10, 10, 0.78) 93%,
-                #0a0a0a 100%
-            );
-        }
-
-        .honour-image-fade img {
-            display: block;
-            width: 100%;
-            object-fit: cover;
-            max-height: 400px;
+        /* Image Fade Mix Effect for 3rd Card */
+        .fade-y-mix {
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+            mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
         }
     </style>
 </head>
+<body class="min-h-screen flex flex-col relative">
 
-<body class="min-h-screen flex flex-col">
+    <!-- Global Gemini Glowing Theme Background (Poori Theme Ke Liye) -->
+    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+        <!-- Top Left Glow -->
+        <div class="absolute -top-40 -left-40 h-[600px] w-[600px] rounded-full bg-blue-600/20 blur-[130px]"></div>
+        <!-- Middle Right Glow -->
+        <div class="absolute top-1/2 -right-40 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-blue-500/15 blur-[150px]"></div>
+        <!-- Bottom Center Glow -->
+        <div class="absolute -bottom-40 left-1/2 h-[500px] w-[120vw] -translate-x-1/2 rounded-[50%] bg-blue-600/25 blur-[150px]"></div>
+    </div>
 
     <!-- Navbar -->
     <header class="sticky top-0 z-50 flex items-center justify-between bg-black/50 backdrop-blur-md px-5 py-4 shadow-sm border-b border-white/5">
-
         <div class="flex items-center gap-3">
-            <img
-                src="assets/images/file_0000000084c8820b935a4144f9728544.png"
-                alt="Hurry Logo"
-                class="h-9 w-9 object-contain rounded-xl"
-            />
-
-            <span class="text-2xl font-bold tracking-wide text-white">
-                Hurry
-            </span>
+            <img src="assets/images/file_0000000084c8820b935a4144f9728544.png" alt="Hurry Logo" class="h-9 w-9 object-contain rounded-xl" />
+            <span class="text-2xl font-bold tracking-wide text-white">Hurry</span>
         </div>
 
         <!-- Menu Button and Dropdown -->
         <div class="relative">
-
-            <button
-                id="menu-btn"
-                aria-label="Menu"
-                class="text-white transition hover:scale-110"
-            >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="29"
-                    height="29"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
+            <button id="menu-btn" aria-label="Menu" class="text-white transition hover:scale-110">
+                <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="4" x2="20" y1="12" y2="12"></line>
                     <line x1="4" x2="20" y1="6" y2="6"></line>
                     <line x1="4" x2="20" y1="18" y2="18"></line>
                 </svg>
             </button>
 
-            <div
-                id="dropdown-menu"
-                class="hidden absolute right-0 mt-4 flex w-40 flex-col overflow-hidden rounded-2xl border border-gray-800 bg-[#0a0a0a] shadow-[0_0_20px_rgba(0,0,0,0.8)]"
-            >
-
-                <a
-                    href="#home"
-                    class="menu-link px-5 py-3 text-sm font-medium text-gray-300 transition hover:bg-[#141414] hover:text-blue-600"
-                >
-                    Home
-                </a>
-
+            <!-- Dropdown Box -->
+            <div id="dropdown-menu" class="hidden absolute right-0 mt-4 flex w-40 flex-col overflow-hidden rounded-2xl border border-gray-800 bg-[#0a0a0a] shadow-[0_0_20px_rgba(0,0,0,0.8)]">
+                <a href="#home" class="menu-link px-5 py-3 text-sm font-medium text-gray-300 transition hover:bg-[#141414] hover:text-blue-600">Home</a>
                 <div class="h-[1px] w-full bg-gray-800/50"></div>
-
-                <a
-                    href="#feature"
-                    class="menu-link px-5 py-3 text-sm font-medium text-gray-300 transition hover:bg-[#141414] hover:text-blue-600"
-                >
-                    Feature
-                </a>
-
+                <a href="#feature" class="menu-link px-5 py-3 text-sm font-medium text-gray-300 transition hover:bg-[#141414] hover:text-blue-600">Feature</a>
                 <div class="h-[1px] w-full bg-gray-800/50"></div>
-
-                <a
-                    href="#about"
-                    class="menu-link px-5 py-3 text-sm font-medium text-gray-300 transition hover:bg-[#141414] hover:text-blue-600"
-                >
-                    About
-                </a>
-
+                <a href="#about" class="menu-link px-5 py-3 text-sm font-medium text-gray-300 transition hover:bg-[#141414] hover:text-blue-600">About</a>
             </div>
         </div>
     </header>
 
-
-    <!-- Main Content -->
-    <main class="flex-grow px-4 py-8 md:px-8 relative z-10 flex flex-col gap-8">
-
-        <!-- TOP SECTION GROUP -->
-        <div class="flex flex-col gap-2 w-full">
-
-            <!-- 1. Hero Section Card -->
-            <section
-                id="home"
-                class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-12 shadow-2xl scroll-mt-24"
-            >
-
-                <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/30 blur-[75px] pointer-events-none"></div>
-
-                <div class="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between gap-8 text-center md:text-left">
-
-                    <div class="md:w-1/2 flex flex-col items-center md:items-start">
-
-                        <div class="flex items-center gap-5 mb-4">
-
-                            <img
-                                src="assets/images/file_0000000084c8820b935a4144f9728544.png"
-                                alt="Hurry App"
-                                class="h-20 w-20 object-contain rounded-3xl shadow-[0_0_40px_rgba(37,99,235,0.4)]"
-                            />
-
-                            <h1 class="text-5xl font-bold leading-tight text-white md:text-6xl">
-                                Hurry
-                            </h1>
-
-                        </div>
-
-                        <h2 class="text-2xl font-light text-gray-300 md:text-4xl">
-                            Voice Chat & Party Rooms
-                        </h2>
-
+    <!-- Main Content: Directly applies gap-6 between all top-level sections -->
+    <main class="flex-grow px-4 py-8 md:px-8 relative z-10 flex flex-col gap-6">
+        
+        <!-- 1. Hero Section Card -->
+        <section id="home" class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-12 shadow-2xl scroll-mt-24">
+            <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/30 blur-[75px] pointer-events-none"></div>
+            
+            <div class="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between gap-8 text-center md:text-left">
+                <div class="md:w-1/2 flex flex-col items-center md:items-start">
+                    <div class="flex items-center gap-5 mb-4">
+                        <img src="assets/images/file_0000000084c8820b935a4144f9728544.png" alt="Hurry App" class="h-20 w-20 object-contain rounded-3xl shadow-[0_0_40px_rgba(37,99,235,0.4)]" />
+                        <h1 class="text-5xl font-bold leading-tight text-white md:text-6xl">Hurry</h1>
                     </div>
-
-                    <div class="md:w-1/2 flex justify-center md:justify-end">
-
-                        <img
-                            src="assets/images/file_00000000d60081fa99e9262352f29b19.png"
-                            alt="Hurry App Screen"
-                            class="object-contain rounded-2xl shadow-xl w-64 md:w-80"
-                        />
-
-                    </div>
-
-                </div>
-            </section>
-
-
-            <!-- 2. Coins Cards Section -->
-            <section class="mx-auto w-full max-w-5xl flex flex-col gap-6">
-
-                <!-- Row 1 -->
-                <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-
-                    <!-- Daily Free Coins -->
-                    <div class="relative overflow-hidden rounded-[32px] bg-[#0a0a0a] p-6 text-center shadow-2xl transition hover:scale-105 flex flex-col items-center justify-center">
-
-                        <div class="absolute -top-16 left-1/2 h-40 w-40 -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[50px] pointer-events-none z-0"></div>
-
-                        <div class="relative z-10 flex flex-col items-center w-full">
-
-                            <h3 class="mb-3 text-xl md:text-2xl font-bold text-white">
-                                Daily Free Coins
-                            </h3>
-
-                            <div class="flex items-center justify-center gap-3">
-
-                                <img
-                                    src="assets/file_00000000e56882119c217d508b6733dc.png"
-                                    alt="Coin Image"
-                                    class="w-12 h-12 md:w-14 md:h-14 object-contain drop-shadow-[0_0_20px_rgba(255,215,0,0.4)]"
-                                />
-
-                                <p class="text-3xl md:text-4xl font-black text-blue-500 drop-shadow-md">
-                                    <span class="counter" data-target="500000">0</span>+
-                                </p>
-
-                            </div>
-
-                        </div>
-                    </div>
-
-
-                    <!-- Rooms Task Free Coins -->
-                    <div class="relative overflow-hidden rounded-[32px] bg-[#0a0a0a] p-6 text-center shadow-2xl transition hover:scale-105 flex flex-col items-center justify-center">
-
-                        <div class="absolute -top-16 left-1/2 h-40 w-40 -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[50px] pointer-events-none z-0"></div>
-
-                        <div class="relative z-10 flex flex-col items-center w-full">
-
-                            <h3 class="mb-3 text-xl md:text-2xl font-bold text-white">
-                                Rooms Task Free Coins
-                            </h3>
-
-                            <div class="flex items-center justify-center gap-3">
-
-                                <img
-                                    src="assets/file_00000000e56882119c217d508b6733dc.png"
-                                    alt="Coin Image"
-                                    class="w-12 h-12 md:w-14 md:h-14 object-contain drop-shadow-[0_0_20px_rgba(255,215,0,0.4)]"
-                                />
-
-                                <p class="text-3xl md:text-4xl font-black text-blue-500 drop-shadow-md">
-                                    <span class="counter" data-target="400000">0</span>+
-                                </p>
-
-                            </div>
-
-                        </div>
-                    </div>
-
+                    <h2 class="text-2xl font-light text-gray-300 md:text-4xl">Voice Chat & Party Rooms</h2>
                 </div>
 
-
-                <!-- Row 2 -->
-                <div class="flex justify-center">
-
-                    <div class="relative w-full md:w-2/3 overflow-hidden rounded-[32px] bg-[#0a0a0a] p-6 text-center shadow-2xl transition hover:scale-105 flex flex-col items-center justify-center border border-white/5">
-
-                        <div class="absolute -top-16 left-1/2 h-40 w-40 -translate-x-1/2 rounded-[100%] bg-yellow-500/10 blur-[60px] pointer-events-none z-0"></div>
-
-                        <div class="relative z-10 flex flex-col items-center w-full">
-
-                            <h3 class="mb-3 text-xl md:text-2xl font-bold text-white">
-                                Level Rewards Free Coins
-                            </h3>
-
-                            <div class="flex items-center justify-center gap-3">
-
-                                <img
-                                    src="assets/file_00000000e56882119c217d508b6733dc.png"
-                                    alt="Coin Image"
-                                    class="w-12 h-12 md:w-14 md:h-14 object-contain drop-shadow-[0_0_20px_rgba(255,215,0,0.6)]"
-                                />
-
-                                <p class="text-3xl md:text-5xl font-black text-yellow-500 drop-shadow-md">
-                                    <span class="counter" data-target="1000000000">0</span>+
-                                </p>
-
-                            </div>
-
-                        </div>
-                    </div>
+                <div class="md:w-1/2 flex justify-center md:justify-end">
+                    <img src="assets/images/file_00000000d60081fa99e9262352f29b19.png" alt="Hurry App Screen" class="object-contain rounded-2xl shadow-xl w-64 md:w-80" />
                 </div>
-
-            </section>
-
-
-            <!-- 3. Invite Your Friend Card -->
-            <section
-                class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-10 shadow-2xl scroll-mt-24"
-            >
-
-                <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[75px] pointer-events-none"></div>
-
-                <div class="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between gap-8 text-center md:text-left">
-
-                    <div class="md:w-3/5">
-
-                        <h2 class="mb-2 text-3xl font-bold text-white md:text-4xl leading-tight">
-                            Invite Your Friend <br />
-                            And find your Honour
-                        </h2>
-
-                    </div>
-
-                    <div class="md:w-2/5 flex justify-center md:justify-end">
-
-                        <img
-                            src="assets/images/IMG_20260913_205804.png"
-                            alt="Invite Friend Screen"
-                            class="object-contain rounded-2xl shadow-xl w-56"
-                        />
-
-                    </div>
-
-                </div>
-            </section>
-
-        </div>
-
-
-        <!-- 4. Honour Events Card -->
-        <section
-            class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] shadow-2xl scroll-mt-24 flex flex-col pt-8"
-        >
-
-            <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[75px] pointer-events-none z-0"></div>
-
-            <div class="relative z-20 pb-6 w-full text-center px-4">
-
-                <h2 class="text-3xl font-bold text-white md:text-4xl">
-                    Honour Events
-                </h2>
-
             </div>
-
-            <!-- TOP + BOTTOM FADE -->
-            <div class="honour-image-fade relative w-full z-10 mt-auto">
-
-                <img
-                    src="assets/file_00000000d3b4820aaa7dc8604e4044ae.png"
-                    alt="Honour Events Screen"
-                />
-
-            </div>
-
         </section>
 
+        <!-- 2. 3 Coins Cards Section -->
+        <section class="mx-auto w-full max-w-5xl flex flex-col gap-6">
+            <!-- Row 1: Two Cards -->
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                <!-- 1st Card: Daily Free Coins -->
+                <div class="relative overflow-hidden rounded-[32px] bg-[#0a0a0a] p-6 text-center shadow-2xl transition hover:scale-105 flex flex-col items-center justify-center">
+                    <div class="absolute -top-16 left-1/2 h-40 w-40 -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[50px] pointer-events-none z-0"></div>
+                    <div class="relative z-10 flex flex-col items-center w-full">
+                        <h3 class="mb-3 text-xl md:text-2xl font-bold text-white">Daily Free Coins</h3>
+                        <div class="flex items-center justify-center gap-3">
+                            <img src="assets/file_00000000e56882119c217d508b6733dc.png" alt="Coin Image" class="w-12 h-12 md:w-14 md:h-14 object-contain drop-shadow-[0_0_20px_rgba(255,215,0,0.4)]" />
+                            <p class="text-3xl md:text-4xl font-black text-blue-500 drop-shadow-md">
+                                <span class="counter" data-target="500000">0</span>+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2nd Card: Rooms Task Free Coins -->
+                <div class="relative overflow-hidden rounded-[32px] bg-[#0a0a0a] p-6 text-center shadow-2xl transition hover:scale-105 flex flex-col items-center justify-center">
+                    <div class="absolute -top-16 left-1/2 h-40 w-40 -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[50px] pointer-events-none z-0"></div>
+                    <div class="relative z-10 flex flex-col items-center w-full">
+                        <h3 class="mb-3 text-xl md:text-2xl font-bold text-white">Rooms Task Free Coins</h3>
+                        <div class="flex items-center justify-center gap-3">
+                            <img src="assets/file_00000000e56882119c217d508b6733dc.png" alt="Coin Image" class="w-12 h-12 md:w-14 md:h-14 object-contain drop-shadow-[0_0_20px_rgba(255,215,0,0.4)]" />
+                            <p class="text-3xl md:text-4xl font-black text-blue-500 drop-shadow-md">
+                                <span class="counter" data-target="400000">0</span>+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2: 3rd Card Centered in Middle -->
+            <div class="flex justify-center">
+                <div class="relative w-full md:w-2/3 overflow-hidden rounded-[32px] bg-[#0a0a0a] p-6 text-center shadow-2xl transition hover:scale-105 flex flex-col items-center justify-center border border-white/5">
+                    <div class="absolute -top-16 left-1/2 h-40 w-40 -translate-x-1/2 rounded-[100%] bg-yellow-500/10 blur-[60px] pointer-events-none z-0"></div>
+                    <div class="relative z-10 flex flex-col items-center w-full">
+                        <h3 class="mb-3 text-xl md:text-2xl font-bold text-white">Level Rewards Free Coins</h3>
+                        <div class="flex items-center justify-center gap-3">
+                            <img src="assets/file_00000000e56882119c217d508b6733dc.png" alt="Coin Image" class="w-12 h-12 md:w-14 md:h-14 object-contain drop-shadow-[0_0_20px_rgba(255,215,0,0.6)]" />
+                            <p class="text-3xl md:text-5xl font-black text-yellow-500 drop-shadow-md">
+                                <span class="counter" data-target="1000000000">0</span>+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Invite Your Friend Card (Cards continuation) -->
+        <section class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-10 shadow-2xl scroll-mt-24">
+            <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[75px] pointer-events-none"></div>
+            
+            <div class="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between gap-8 text-center md:text-left">
+                <div class="md:w-3/5">
+                    <h2 class="mb-2 text-3xl font-bold text-white md:text-4xl leading-tight">
+                        Invite Your Friend <br /> And find your Honour
+                    </h2>
+                </div>
+                <div class="md:w-2/5 flex justify-center md:justify-end">
+                    <img src="assets/images/IMG_20260913_205804.png" alt="Invite Friend Screen" class="object-contain w-56 fade-y-mix" />
+                </div>
+            </div>
+        </section>
+        
+        <!-- 4. Honour Events Card -->
+        <section class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] shadow-2xl scroll-mt-24 flex flex-col pt-8">
+            <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[75px] pointer-events-none z-0"></div>
+            
+            <div class="relative z-20 pb-6 w-full text-center px-4">
+                <h2 class="text-3xl font-bold text-white md:text-4xl">Honour Events</h2>
+            </div>
+            
+            <div class="relative w-full z-10 mt-auto">
+                <img src="assets/file_00000000d3b4820aaa7dc8604e4044ae.png" alt="Honour Events Screen" class="w-full object-cover max-h-[400px] block" />
+            </div>
+        </section>
 
         <!-- 5. Find Your Crowd Card -->
-        <section
-            class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-10 shadow-2xl scroll-mt-24"
-        >
-
+        <section class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-10 shadow-2xl scroll-mt-24">
             <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[75px] pointer-events-none"></div>
-
+            
             <div class="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between gap-8 text-center md:text-left">
-
                 <div class="md:w-3/5">
-
-                    <h2 class="mb-4 text-3xl font-bold text-white">
-                        Find Your Crowd
-                    </h2>
-
+                    <h2 class="mb-4 text-3xl font-bold text-white">Find Your Crowd</h2>
                     <p class="mb-6 text-base font-light leading-relaxed text-gray-300">
                         Whether you're discussing a punchline or sharing your own
                         stories, Hurry helps you find your crowd and express yourself
                         freely.
                     </p>
-
-                    <p class="text-base font-medium text-white">
-                        Join Hurry and make your day!
-                    </p>
-
+                    <p class="text-base font-medium text-white">Join Hurry and make your day!</p>
                 </div>
-
                 <div class="md:w-2/5 flex justify-center md:justify-end">
-
                     <div class="relative w-[220px] h-[450px] rounded-[2.5rem] border-[8px] border-gray-900 bg-black overflow-hidden shadow-[0_0_30px_rgba(37,99,235,0.2)] flex-shrink-0">
-
                         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-6 bg-gray-900 rounded-b-2xl z-20"></div>
-
                         <div class="absolute inset-0 w-full h-full">
-
                             <div class="w-full h-full flex flex-col animate-scrollMobile">
-
-                                <img
-                                    src="assets/images/file_000000009bc481fa8cddb12eb18774a1.png"
-                                    alt="Slide 1"
-                                    class="w-full h-full object-cover flex-shrink-0"
-                                />
-
-                                <img
-                                    src="assets/file_00000000630081f5bb3183be631ba4c1.png"
-                                    alt="Slide 2"
-                                    class="w-full h-full object-cover flex-shrink-0"
-                                />
-
-                                <img
-                                    src="assets/file_000000007bdc81f8bd9d48184974a580.png"
-                                    alt="Slide 3"
-                                    class="w-full h-full object-cover flex-shrink-0"
-                                />
-
-                                <img
-                                    src="assets/file_00000000be9881f5b4bc8b6aa3038dd7.png"
-                                    alt="Slide 4"
-                                    class="w-full h-full object-cover flex-shrink-0"
-                                />
-
+                                <img src="assets/images/file_000000009bc481fa8cddb12eb18774a1.png" alt="Slide 1" class="w-full h-full object-cover flex-shrink-0" />
+                                <img src="assets/file_00000000630081f5bb3183be631ba4c1.png" alt="Slide 2" class="w-full h-full object-cover flex-shrink-0" />
+                                <img src="assets/file_000000007bdc81f8bd9d48184974a580.png" alt="Slide 3" class="w-full h-full object-cover flex-shrink-0" />
+                                <img src="assets/file_00000000be9881f5b4bc8b6aa3038dd7.png" alt="Slide 4" class="w-full h-full object-cover flex-shrink-0" />
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
-
 
         <!-- 6. Key Features Card -->
-        <section
-            id="feature"
-            class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-10 shadow-2xl scroll-mt-24"
-        >
-
+        <section id="feature" class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-10 shadow-2xl scroll-mt-24">
             <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[75px] pointer-events-none"></div>
-
+            
             <div class="relative z-10">
-
                 <div class="mb-10 text-center">
-
-                    <h2 class="mb-3 text-3xl font-bold text-white">
-                        Key Features
-                    </h2>
-
+                    <h2 class="mb-3 text-3xl font-bold text-white">Key Features</h2>
                     <div class="mx-auto h-1 w-16 rounded-full bg-blue-600 shadow-[0_0_10px_rgba(37,99,235,0.6)]"></div>
-
                 </div>
 
-
                 <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-
                     <div class="text-center flex flex-col items-center transition hover:scale-105">
-
                         <div class="mb-4 flex justify-center">
-
-                            <img
-                                src="assets/images/IMG_20260913_205718.png"
-                                alt="Chat"
-                                class="w-16 h-16 object-contain drop-shadow-[0_0_15px_rgba(37,99,235,0.3)]"
-                            />
-
+                            <img src="assets/images/IMG_20260913_205718.png" alt="Chat" class="w-16 h-16 object-contain drop-shadow-[0_0_15px_rgba(37,99,235,0.3)]" />
                         </div>
-
-                        <h3 class="mb-2 text-xl font-bold text-white">
-                            Chat
-                        </h3>
-
-                        <p class="text-sm font-light text-gray-400 px-2">
-                            Engage in lively video chats about the latest shows or dive into 1-on-1 private conversations.
-                        </p>
-
+                        <h3 class="mb-2 text-xl font-bold text-white">Chat</h3>
+                        <p class="text-sm font-light text-gray-400 px-2">Engage in lively video chats about the latest shows or dive into 1-on-1 private conversations.</p>
                     </div>
 
-
                     <div class="text-center flex flex-col items-center transition hover:scale-105">
-
                         <div class="mb-4 flex justify-center">
-
-                            <img
-                                src="assets/images/IMG_20260913_205700.png"
-                                alt="Share"
-                                class="w-16 h-16 object-contain drop-shadow-[0_0_15px_rgba(37,99,235,0.3)]"
-                            />
-
+                            <img src="assets/images/IMG_20260913_205700.png" alt="Share" class="w-16 h-16 object-contain drop-shadow-[0_0_15px_rgba(37,99,235,0.3)]" />
                         </div>
-
-                        <h3 class="mb-2 text-xl font-bold text-white">
-                            Share
-                        </h3>
-
-                        <p class="text-sm font-light text-gray-400 px-2">
-                            Share your moments, from backstage snippets to stand-up clips with like-minded enthusiasts.
-                        </p>
-
+                        <h3 class="mb-2 text-xl font-bold text-white">Share</h3>
+                        <p class="text-sm font-light text-gray-400 px-2">Share your moments, from backstage snippets to stand-up clips with like-minded enthusiasts.</p>
                     </div>
 
-
                     <div class="text-center flex flex-col items-center transition hover:scale-105">
-
                         <div class="mb-4 flex justify-center">
-
-                            <img
-                                src="assets/images/IMG_20260913_205733.png"
-                                alt="Connect"
-                                class="w-16 h-16 object-contain drop-shadow-[0_0_15px_rgba(37,99,235,0.3)]"
-                            />
-
+                            <img src="assets/images/IMG_20260913_205733.png" alt="Connect" class="w-16 h-16 object-contain drop-shadow-[0_0_15px_rgba(37,99,235,0.3)]" />
                         </div>
-
-                        <h3 class="mb-2 text-xl font-bold text-white">
-                            Connect
-                        </h3>
-
-                        <p class="text-sm font-light text-gray-400 px-2">
-                            Connect with creative souls in a vibrant stage designed for theater and comedy lovers.
-                        </p>
-
+                        <h3 class="mb-2 text-xl font-bold text-white">Connect</h3>
+                        <p class="text-sm font-light text-gray-400 px-2">Connect with creative souls in a vibrant stage designed for theater and comedy lovers.</p>
                     </div>
-
                 </div>
             </div>
         </section>
 
-
         <!-- 7. Community Card -->
-        <section
-            id="about"
-            class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-10 shadow-2xl scroll-mt-24"
-        >
-
+        <section id="about" class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-10 shadow-2xl scroll-mt-24">
             <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[75px] pointer-events-none"></div>
-
+            
             <div class="relative z-10">
-
                 <div class="mb-10 text-center">
-
-                    <h2 class="mb-3 text-3xl font-bold text-white">
-                        Join Our Community
-                    </h2>
-
+                    <h2 class="mb-3 text-3xl font-bold text-white">Join Our Community</h2>
                     <div class="mx-auto h-1 w-16 rounded-full bg-blue-600 shadow-[0_0_10px_rgba(37,99,235,0.6)]"></div>
-
                 </div>
-
 
                 <p class="mb-6 text-center text-base font-light leading-relaxed text-gray-300 md:px-10">
                     Hurry is more than an app—it's a home for creative expression.
@@ -638,133 +266,58 @@
                     someone who appreciates authentic connections, you'll find your
                     place here.
                 </p>
-
-
                 <p class="mb-12 text-center text-base font-light leading-relaxed text-gray-300 md:px-10">
                     Share your passion, discover new talents, and build meaningful
                     relationships in a space designed for creativity.
                 </p>
 
-
                 <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-4">
-
                     <div class="text-center transition hover:scale-105 flex flex-col items-center">
-
                         <div class="mb-3 flex justify-center">
-
-                            <img
-                                src="assets/images/IMG_20260913_205638.png"
-                                alt="Theater Lovers"
-                                class="w-20 h-20 object-contain drop-shadow-[0_0_15px_rgba(37,99,235,0.4)]"
-                            />
-
+                            <img src="assets/images/IMG_20260913_205638.png" alt="Theater Lovers" class="w-20 h-20 object-contain drop-shadow-[0_0_15px_rgba(37,99,235,0.4)]" />
                         </div>
-
-                        <h4 class="mb-1 text-lg font-bold text-white">
-                            Theater Lovers
-                        </h4>
-
-                        <p class="text-xs text-gray-400">
-                            Connect with fellow theater enthusiasts
-                        </p>
-
+                        <h4 class="mb-1 text-lg font-bold text-white">Theater Lovers</h4>
+                        <p class="text-xs text-gray-400">Connect with fellow theater enthusiasts</p>
                     </div>
 
-
                     <div class="text-center transition hover:scale-105 flex flex-col items-center">
-
                         <div class="mb-3 flex justify-center">
-
-                            <img
-                                src="assets/images/IMG_20260913_205620.png"
-                                alt="Comedy Fans"
-                                class="w-20 h-20 object-contain drop-shadow-[0_0_15px_rgba(37,99,235,0.4)]"
-                            />
-
+                            <img src="assets/images/IMG_20260913_205620.png" alt="Comedy Fans" class="w-20 h-20 object-contain drop-shadow-[0_0_15px_rgba(37,99,235,0.4)]" />
                         </div>
-
-                        <h4 class="mb-1 text-lg font-bold text-white">
-                            Comedy Fans
-                        </h4>
-
-                        <p class="text-xs text-gray-400">
-                            Share laughs and discover new comedians
-                        </p>
-
+                        <h4 class="mb-1 text-lg font-bold text-white">Comedy Fans</h4>
+                        <p class="text-xs text-gray-400">Share laughs and discover new comedians</p>
                     </div>
 
-
                     <div class="text-center transition hover:scale-105 flex flex-col items-center">
-
                         <div class="mb-3 flex justify-center">
-
-                            <img
-                                src="assets/IMG_20260915_195447.png"
-                                alt="Performers"
-                                class="w-20 h-20 object-contain drop-shadow-[0_0_15px_rgba(37,99,235,0.4)]"
-                            />
-
+                            <img src="assets/IMG_20260915_195447.png" alt="Performers" class="w-20 h-20 object-contain drop-shadow-[0_0_15px_rgba(37,99,235,0.4)]" />
                         </div>
-
-                        <h4 class="mb-1 text-lg font-bold text-white">
-                            Performers
-                        </h4>
-
-                        <p class="text-xs text-gray-400">
-                            Showcase your talent and get feedback
-                        </p>
-
+                        <h4 class="mb-1 text-lg font-bold text-white">Performers</h4>
+                        <p class="text-xs text-gray-400">Showcase your talent and get feedback</p>
                     </div>
 
-
                     <div class="text-center transition hover:scale-105 flex flex-col items-center">
-
                         <div class="mb-3 flex justify-center">
-
-                            <img
-                                src="assets/images/IMG_20260913_205553.png"
-                                alt="Community"
-                                class="w-20 h-20 object-contain drop-shadow-[0_0_15px_rgba(37,99,235,0.4)]"
-                            />
-
+                            <img src="assets/images/IMG_20260913_205553.png" alt="Community" class="w-20 h-20 object-contain drop-shadow-[0_0_15px_rgba(37,99,235,0.4)]" />
                         </div>
-
-                        <h4 class="mb-1 text-lg font-bold text-white">
-                            Community
-                        </h4>
-
-                        <p class="text-xs text-gray-400">
-                            Build meaningful connections
-                        </p>
-
+                        <h4 class="mb-1 text-lg font-bold text-white">Community</h4>
+                        <p class="text-xs text-gray-400">Build meaningful connections</p>
                     </div>
-
                 </div>
             </div>
         </section>
-
     </main>
 
-
-    <!-- Footer -->
-    <footer class="relative w-full py-12 text-center text-sm text-gray-500 overflow-hidden mt-auto bg-black">
-
-        <div class="absolute bottom-[-150px] left-1/2 h-[300px] w-[100vw] -translate-x-1/2 rounded-[50%] bg-blue-500/40 blur-[120px] pointer-events-none z-0"></div>
-
-        <div class="relative z-10">
-
-            <p>
-                &copy; 2026 Hurry App. All rights reserved.
-            </p>
-
+    <!-- Support Footer without any background block -->
+    <footer class="relative w-full py-16 text-center text-sm text-gray-400 mt-auto bg-transparent z-10">
+        <div class="relative flex flex-col items-center gap-2">
+            <p class="text-base font-medium text-white tracking-wide transition hover:text-blue-400">Support: Hurry@Support.com</p>
+            <p>&copy; 2026 Hurry App. All rights reserved.</p>
         </div>
-
     </footer>
-
 
     <!-- Script for Dropdown & Counter Animation -->
     <script>
-
         // Dropdown Logic
         const menuBtn = document.getElementById('menu-btn');
         const dropdownMenu = document.getElementById('dropdown-menu');
@@ -780,68 +333,41 @@
             });
         });
 
-
         // Animated Counter Logic
         const counters = document.querySelectorAll('.counter');
-        const speed = 60;
+        const speed = 60; // Adjust for smoothness
 
         const animateCounter = (counter) => {
-
             const updateCount = () => {
-
                 const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText.replace(/,/g, '');
+                const count = +counter.innerText.replace(/,/g, ''); // Read without commas
 
                 const inc = target / speed;
 
                 if (count < target) {
-
-                    counter.innerText =
-                        Math.ceil(count + inc).toLocaleString('en-US');
-
+                    // Update number with international comma format
+                    counter.innerText = Math.ceil(count + inc).toLocaleString('en-US');
                     setTimeout(updateCount, 25);
-
                 } else {
-
-                    counter.innerText =
-                        target.toLocaleString('en-US');
-
+                    counter.innerText = target.toLocaleString('en-US');
                 }
             };
-
             updateCount();
         };
 
-
         // Trigger animation when scrolled into view
-        const observer = new IntersectionObserver(
-
-            (entries, observer) => {
-
-                entries.forEach(entry => {
-
-                    if (entry.isIntersecting) {
-
-                        animateCounter(entry.target);
-
-                        observer.unobserve(entry.target);
-                    }
-
-                });
-
-            },
-
-            {
-                threshold: 0.5
-            }
-        );
-
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, { threshold: 0.5 });
 
         counters.forEach(counter => {
             observer.observe(counter);
         });
-
     </script>
-
 </body>
-    </html>
+</html>
