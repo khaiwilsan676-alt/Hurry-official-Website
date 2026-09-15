@@ -39,11 +39,42 @@
             -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
             mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
         }
+
+        /* 🔥 HURRY Name & Logo Premium Glowing Float Animation */
+        @keyframes hurryGlowFloat {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+                text-shadow: 0 0 20px rgba(59, 130, 246, 0.6), 0 0 40px rgba(59, 130, 246, 0.3);
+            }
+            50% {
+                transform: translateY(-6px) scale(1.02);
+                text-shadow: 0 0 30px rgba(59, 130, 246, 0.9), 0 0 60px rgba(37, 99, 235, 0.6);
+            }
+        }
+
+        @keyframes hurryIconPulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 25px rgba(37, 99, 235, 0.5);
+            }
+            50% {
+                transform: scale(1.06);
+                box-shadow: 0 0 45px rgba(37, 99, 235, 0.8), 0 0 80px rgba(59, 130, 246, 0.4);
+            }
+        }
+
+        .animate-hurry-text {
+            animation: hurryGlowFloat 3.5s ease-in-out infinite;
+        }
+
+        .animate-hurry-icon {
+            animation: hurryIconPulse 3.5s ease-in-out infinite;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col relative">
 
-    <!-- Global Gemini Glowing Theme Background (Poori Theme Ke Liye) -->
+    <!-- Global Gemini Glowing Theme Background -->
     <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
         <!-- Top Left Glow -->
         <div class="absolute -top-40 -left-40 h-[600px] w-[600px] rounded-full bg-blue-600/20 blur-[130px]"></div>
@@ -81,18 +112,20 @@
         </div>
     </header>
 
-    <!-- Main Content: Directly applies gap-6 between all top-level sections -->
+    <!-- Main Content -->
     <main class="flex-grow px-4 py-8 md:px-8 relative z-10 flex flex-col gap-6">
         
-        <!-- 1. Hero Section Card -->
+        <!-- 1. Hero Section Card with Animated Hurry Branding -->
         <section id="home" class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-12 shadow-2xl scroll-mt-24">
             <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/30 blur-[75px] pointer-events-none"></div>
             
             <div class="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between gap-8 text-center md:text-left">
                 <div class="md:w-1/2 flex flex-col items-center md:items-start">
                     <div class="flex items-center gap-5 mb-4">
-                        <img src="assets/images/file_0000000084c8820b935a4144f9728544.png" alt="Hurry App" class="h-20 w-20 object-contain rounded-3xl shadow-[0_0_40px_rgba(37,99,235,0.4)]" />
-                        <h1 class="text-5xl font-bold leading-tight text-white md:text-6xl">Hurry</h1>
+                        <!-- Animated Logo Icon -->
+                        <img src="assets/images/file_0000000084c8820b935a4144f9728544.png" alt="Hurry App" class="h-20 w-20 object-contain rounded-3xl animate-hurry-icon" />
+                        <!-- Animated Hurry Text Name -->
+                        <h1 class="text-5xl font-extrabold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-indigo-300 md:text-6xl animate-hurry-text">Hurry</h1>
                     </div>
                     <h2 class="text-2xl font-light text-gray-300 md:text-4xl">Voice Chat & Party Rooms</h2>
                 </div>
@@ -153,7 +186,7 @@
             </div>
         </section>
 
-        <!-- 3. Invite Your Friend Card (Cards continuation) -->
+        <!-- 3. Invite Your Friend Card -->
         <section class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-10 shadow-2xl scroll-mt-24">
             <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[75px] pointer-events-none"></div>
             
@@ -371,3 +404,4 @@
     </script>
 </body>
 </html>
+
