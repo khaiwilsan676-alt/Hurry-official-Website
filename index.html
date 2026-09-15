@@ -40,35 +40,100 @@
             mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
         }
 
-        /* 🔥 HURRY Name & Logo Premium Glowing Float Animation */
-        @keyframes hurryGlowFloat {
-            0%, 100% {
-                transform: translateY(0) scale(1);
-                text-shadow: 0 0 20px rgba(59, 130, 246, 0.6), 0 0 40px rgba(59, 130, 246, 0.3);
+        /* 🎬 HURRY Letters & Plane Drop Animation */
+        
+        /* 'u-r-r-y' falling animation */
+        @keyframes dropLetter {
+            0% {
+                opacity: 0;
+                transform: translateY(-40px);
             }
-            50% {
-                transform: translateY(-6px) scale(1.02);
-                text-shadow: 0 0 30px rgba(59, 130, 246, 0.9), 0 0 60px rgba(37, 99, 235, 0.6);
-            }
-        }
-
-        @keyframes hurryIconPulse {
-            0%, 100% {
-                transform: scale(1);
-                box-shadow: 0 0 25px rgba(37, 99, 235, 0.5);
-            }
-            50% {
-                transform: scale(1.06);
-                box-shadow: 0 0 45px rgba(37, 99, 235, 0.8), 0 0 80px rgba(59, 130, 246, 0.4);
+            100% {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        .animate-hurry-text {
-            animation: hurryGlowFloat 3.5s ease-in-out infinite;
+        .hurry-title {
+            display: inline-flex;
+            overflow: visible;
+            align-items: center;
         }
 
-        .animate-hurry-icon {
-            animation: hurryIconPulse 3.5s ease-in-out infinite;
+        /* 'u', 'r', 'r', 'y' dropping sequence */
+        .hurry-title .letter-u {
+            opacity: 0;
+            animation: dropLetter 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.8s forwards;
+        }
+        .hurry-title .letter-r1 {
+            opacity: 0;
+            animation: dropLetter 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) 2.1s forwards;
+        }
+        .hurry-title .letter-r2 {
+            opacity: 0;
+            animation: dropLetter 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) 2.4s forwards;
+        }
+        .hurry-title .letter-y {
+            opacity: 0;
+            animation: dropLetter 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) 2.7s forwards;
+        }
+
+        /* ✈️ Plane carrying 'H' from Right to Left */
+        @keyframes flyPlane {
+            0% {
+                transform: translateX(110vw);
+                opacity: 0;
+            }
+            15% {
+                opacity: 1;
+            }
+            85% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-120vw);
+                opacity: 0;
+            }
+        }
+
+        .plane-container {
+            position: fixed;
+            top: 75px; /* Exactly below top navbar */
+            left: 0;
+            width: 100%;
+            height: 60px;
+            z-index: 40;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .flying-plane {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: flyPlane 3s linear forwards;
+        }
+
+        /* 'H' drop and fix animation */
+        @keyframes dropH {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            60% {
+                opacity: 1;
+                transform: translateY(5px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hurry-title .letter-h {
+            opacity: 0;
+            animation: dropH 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.4s forwards;
         }
     </style>
 </head>
@@ -82,6 +147,20 @@
         <div class="absolute top-1/2 -right-40 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-blue-500/15 blur-[150px]"></div>
         <!-- Bottom Center Glow -->
         <div class="absolute -bottom-40 left-1/2 h-[500px] w-[120vw] -translate-x-1/2 rounded-[50%] bg-blue-600/25 blur-[150px]"></div>
+    </div>
+
+    <!-- ✈️ Plane flying right to left carrying 'H' right below the top navbar -->
+    <div class="plane-container">
+        <div class="flying-plane">
+            <!-- Mini Claw/Hook dropping H -->
+            <div class="text-xs text-blue-400 font-mono bg-blue-950/80 px-2 py-1 rounded border border-blue-500/30 flex items-center gap-1 shadow-lg">
+                <span>⚡ H-Dropper</span>
+            </div>
+            <!-- Plane Icon / Object -->
+            <svg class="w-8 h-8 text-blue-500 drop-shadow-[0_0_10px_rgba(37,99,235,0.8)] transform -scale-x-100" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+            </svg>
+        </div>
     </div>
 
     <!-- Navbar -->
@@ -115,23 +194,26 @@
     <!-- Main Content -->
     <main class="flex-grow px-4 py-8 md:px-8 relative z-10 flex flex-col gap-6">
         
-        <!-- 1. Hero Section Card with Animated Hurry Branding -->
+        <!-- 1. Hero Section Card with Plane H-Drop & Letters Falling Animation -->
         <section id="home" class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-12 shadow-2xl scroll-mt-24">
             <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/30 blur-[75px] pointer-events-none"></div>
             
             <div class="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between gap-8 text-center md:text-left">
                 <div class="md:w-1/2 flex flex-col items-center md:items-start">
                     <div class="flex items-center gap-5 mb-4">
-                        <!-- Animated Logo Icon -->
-                        <img src="assets/images/file_0000000084c8820b935a4144f9728544.png" alt="Hurry App" class="h-20 w-20 object-contain rounded-3xl animate-hurry-icon" />
-                        <!-- Animated Hurry Text Name -->
-                        <h1 class="text-5xl font-extrabold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-indigo-300 md:text-6xl animate-hurry-text">Hurry</h1>
+                        <!-- Logo -->
+                        <img src="assets/images/file_0000000084c8820b935a4144f9728544.png" alt="Hurry App" class="h-20 w-20 object-contain rounded-3xl" />
+                        <!-- Hurry Text with Plane H-drop & subsequent letters falling -->
+                        <h1 class="text-5xl font-bold leading-tight text-white md:text-6xl hurry-title">
+                            <span class="letter-h">H</span><span class="letter-u">u</span><span class="letter-r1">r</span><span class="letter-r2">r</span><span class="letter-y">y</span>
+                        </h1>
                     </div>
                     <h2 class="text-2xl font-light text-gray-300 md:text-4xl">Voice Chat & Party Rooms</h2>
                 </div>
 
+                <!-- Right Side Image -->
                 <div class="md:w-1/2 flex justify-center md:justify-end">
-                    <img src="assets/images/file_00000000d60081fa99e9262352f29b19.png" alt="Hurry App Screen" class="object-contain rounded-2xl shadow-xl w-64 md:w-80" />
+                    <img src="assets/images/file_00000000d60081fa99e9262352f29b19.png" alt="Hurry App Screen" class="object-contain rounded-2xl shadow-xl w-72 md:w-96" />
                 </div>
             </div>
         </section>
@@ -404,4 +486,3 @@
     </script>
 </body>
 </html>
-
