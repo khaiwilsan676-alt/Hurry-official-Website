@@ -78,16 +78,16 @@
             animation: dropLetter 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) 3.4s forwards;
         }
 
-        /* ✈️ Plane carrying 'H' from Right to Left (Starts last, takes exactly 3s) */
-        @keyframes flyPlane {
+        /* ✈️ Plane carrying 'H' - slow & clear glide across screen */
+        @keyframes flyPlaneSlow {
             0% {
-                transform: translateX(115vw);
+                transform: translateX(110vw);
                 opacity: 0;
             }
-            10% {
+            8% {
                 opacity: 1;
             }
-            90% {
+            92% {
                 opacity: 1;
             }
             100% {
@@ -113,10 +113,11 @@
             align-items: center;
             gap: 8px;
             opacity: 0;
-            animation: flyPlane 3s cubic-bezier(0.4, 0, 0.2, 1) 4.2s forwards;
+            /* 5.5s duration for smooth visible entrance */
+            animation: flyPlaneSlow 5.5s cubic-bezier(0.25, 0.1, 0.25, 1) 4.2s forwards;
         }
 
-        /* 'H' drops last when plane passes */
+        /* 'H' drops perfectly when plane crosses the logo area */
         @keyframes dropH {
             0% {
                 opacity: 0;
@@ -134,7 +135,8 @@
 
         .hurry-title .letter-h {
             opacity: 0;
-            animation: dropH 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275) 5.3s forwards;
+            /* Synced to trigger exactly when the slow plane reaches the letter position */
+            animation: dropH 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.275) 6.4s forwards;
         }
     </style>
 </head>
@@ -150,7 +152,7 @@
         <div class="absolute -bottom-40 left-1/2 h-[500px] w-[120vw] -translate-x-1/2 rounded-[50%] bg-blue-600/25 blur-[150px]"></div>
     </div>
 
-    <!-- ✈️ Modern White Sleek Plane flying right to left -->
+    <!-- ✈️ Modern White Sleek Plane flying slowly right to left -->
     <div class="plane-container">
         <div class="flying-plane">
             <!-- Sleek Left-facing White Jet Plane -->
