@@ -7,8 +7,6 @@
     <!-- Tailwind CSS for replicating the UI -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800;900&display=swap" rel="stylesheet">
-    <!-- Link to your original stylesheet for the blob backgrounds -->
-    <link rel="stylesheet" href="styles.css">
     
     <style>
         /* Body background is Pure Black */
@@ -22,32 +20,6 @@
         html {
             scroll-behavior: smooth;
             background-color: #000000;
-        }
-        
-        /* Default float blobs */
-        .blob-bg {
-            position: fixed;
-            top: -10%;
-            left: -10%;
-            width: 50vw;
-            height: 50vw;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(37,99,235,0.3) 0%, rgba(0,0,0,0) 70%);
-            filter: blur(80px);
-            z-index: -1;
-            animation: float 10s infinite ease-in-out alternate;
-        }
-        .blob-2 {
-            top: auto;
-            bottom: -10%;
-            left: auto;
-            right: -10%;
-            background: radial-gradient(circle, rgba(139,92,246,0.2) 0%, rgba(0,0,0,0) 70%);
-            animation-delay: -5s;
-        }
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(30px, 50px) scale(1.1); }
         }
 
         /* 4th Card Mobile Scroll Animation */
@@ -64,10 +36,6 @@
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
-    
-    <!-- Your Original Background Theme -->
-    <div class="blob-bg"></div>
-    <div class="blob-bg blob-2"></div>
 
     <!-- Navbar -->
     <header class="sticky top-0 z-50 flex items-center justify-between bg-black/50 backdrop-blur-md px-5 py-4 shadow-sm border-b border-white/5">
@@ -100,103 +68,107 @@
     <!-- Main Content -->
     <main class="flex-grow px-4 py-8 md:px-8 relative z-10 flex flex-col gap-8">
         
-        <!-- 1. Hero Section Card -->
-        <section id="home" class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-12 shadow-2xl scroll-mt-24">
-            <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/30 blur-[75px] pointer-events-none"></div>
+        <!-- TOP SECTION GROUP (Hero, Coins, Invite) with GAP-2 as requested -->
+        <div class="flex flex-col gap-2 w-full">
             
-            <div class="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between gap-8 text-center md:text-left">
-                <div class="md:w-1/2 flex flex-col items-center md:items-start">
-                    <div class="flex items-center gap-5 mb-4">
-                        <img src="assets/images/file_0000000084c8820b935a4144f9728544.png" alt="Hurry App" class="h-20 w-20 object-contain rounded-3xl shadow-[0_0_40px_rgba(37,99,235,0.4)]" />
-                        <h1 class="text-5xl font-bold leading-tight text-white md:text-6xl">Hurry</h1>
+            <!-- 1. Hero Section Card -->
+            <section id="home" class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-12 shadow-2xl scroll-mt-24">
+                <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/30 blur-[75px] pointer-events-none"></div>
+                
+                <div class="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between gap-8 text-center md:text-left">
+                    <div class="md:w-1/2 flex flex-col items-center md:items-start">
+                        <div class="flex items-center gap-5 mb-4">
+                            <img src="assets/images/file_0000000084c8820b935a4144f9728544.png" alt="Hurry App" class="h-20 w-20 object-contain rounded-3xl shadow-[0_0_40px_rgba(37,99,235,0.4)]" />
+                            <h1 class="text-5xl font-bold leading-tight text-white md:text-6xl">Hurry</h1>
+                        </div>
+                        <h2 class="text-2xl font-light text-gray-300 md:text-4xl">Voice Chat & Party Rooms</h2>
                     </div>
-                    <h2 class="text-2xl font-light text-gray-300 md:text-4xl">Voice Chat & Party Rooms</h2>
-                </div>
 
-                <div class="md:w-1/2 flex justify-center md:justify-end">
-                    <img src="assets/images/file_00000000d60081fa99e9262352f29b19.png" alt="Hurry App Screen" class="object-contain rounded-2xl shadow-xl w-64 md:w-80" />
+                    <div class="md:w-1/2 flex justify-center md:justify-end">
+                        <img src="assets/images/file_00000000d60081fa99e9262352f29b19.png" alt="Hurry App Screen" class="object-contain rounded-2xl shadow-xl w-64 md:w-80" />
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- 2. Coins Cards Section -->
-        <section class="mx-auto w-full max-w-5xl flex flex-col gap-6">
-            
-            <!-- Row 1: Two Cards -->
-            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-                <!-- 1st Card: Daily Free Coins -->
-                <div class="relative overflow-hidden rounded-[32px] bg-[#0a0a0a] p-6 text-center shadow-2xl transition hover:scale-105 flex flex-col items-center justify-center">
-                    <div class="absolute -top-16 left-1/2 h-40 w-40 -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[50px] pointer-events-none z-0"></div>
-                    <div class="relative z-10 flex flex-col items-center w-full">
-                        <h3 class="mb-3 text-xl md:text-2xl font-bold text-white">Daily Free Coins</h3>
-                        <div class="flex items-center justify-center gap-3">
-                            <img src="assets/file_00000000e56882119c217d508b6733dc.png" alt="Coin Image" class="w-12 h-12 md:w-14 md:h-14 object-contain drop-shadow-[0_0_20px_rgba(255,215,0,0.4)]" />
-                            <p class="text-3xl md:text-4xl font-black text-blue-500 drop-shadow-md">
-                                <span class="counter" data-target="500000">0</span>+
-                            </p>
+            <!-- 2. Coins Cards Section (Gap is now 2 between the cards inside) -->
+            <section class="mx-auto w-full max-w-5xl flex flex-col gap-2">
+                
+                <!-- Row 1: Two Cards -->
+                <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
+                    <!-- 1st Card: Daily Free Coins -->
+                    <div class="relative overflow-hidden rounded-[32px] bg-[#0a0a0a] p-6 text-center shadow-2xl transition hover:scale-105 flex flex-col items-center justify-center">
+                        <div class="absolute -top-16 left-1/2 h-40 w-40 -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[50px] pointer-events-none z-0"></div>
+                        <div class="relative z-10 flex flex-col items-center w-full">
+                            <h3 class="mb-3 text-xl md:text-2xl font-bold text-white">Daily Free Coins</h3>
+                            <div class="flex items-center justify-center gap-3">
+                                <img src="assets/file_00000000e56882119c217d508b6733dc.png" alt="Coin Image" class="w-12 h-12 md:w-14 md:h-14 object-contain drop-shadow-[0_0_20px_rgba(255,215,0,0.4)]" />
+                                <p class="text-3xl md:text-4xl font-black text-blue-500 drop-shadow-md">
+                                    <span class="counter" data-target="500000">0</span>+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2nd Card: Rooms Task Free Coins -->
+                    <div class="relative overflow-hidden rounded-[32px] bg-[#0a0a0a] p-6 text-center shadow-2xl transition hover:scale-105 flex flex-col items-center justify-center">
+                        <div class="absolute -top-16 left-1/2 h-40 w-40 -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[50px] pointer-events-none z-0"></div>
+                        <div class="relative z-10 flex flex-col items-center w-full">
+                            <h3 class="mb-3 text-xl md:text-2xl font-bold text-white">Rooms Task Free Coins</h3>
+                            <div class="flex items-center justify-center gap-3">
+                                <img src="assets/file_00000000e56882119c217d508b6733dc.png" alt="Coin Image" class="w-12 h-12 md:w-14 md:h-14 object-contain drop-shadow-[0_0_20px_rgba(255,215,0,0.4)]" />
+                                <p class="text-3xl md:text-4xl font-black text-blue-500 drop-shadow-md">
+                                    <span class="counter" data-target="400000">0</span>+
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 2nd Card: Rooms Task Free Coins -->
-                <div class="relative overflow-hidden rounded-[32px] bg-[#0a0a0a] p-6 text-center shadow-2xl transition hover:scale-105 flex flex-col items-center justify-center">
-                    <div class="absolute -top-16 left-1/2 h-40 w-40 -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[50px] pointer-events-none z-0"></div>
-                    <div class="relative z-10 flex flex-col items-center w-full">
-                        <h3 class="mb-3 text-xl md:text-2xl font-bold text-white">Rooms Task Free Coins</h3>
-                        <div class="flex items-center justify-center gap-3">
-                            <img src="assets/file_00000000e56882119c217d508b6733dc.png" alt="Coin Image" class="w-12 h-12 md:w-14 md:h-14 object-contain drop-shadow-[0_0_20px_rgba(255,215,0,0.4)]" />
-                            <p class="text-3xl md:text-4xl font-black text-blue-500 drop-shadow-md">
-                                <span class="counter" data-target="400000">0</span>+
-                            </p>
+                <!-- Row 2: 3rd Card Centered in Middle -->
+                <div class="flex justify-center">
+                    <div class="relative w-full md:w-2/3 overflow-hidden rounded-[32px] bg-[#0a0a0a] p-6 text-center shadow-2xl transition hover:scale-105 flex flex-col items-center justify-center border border-white/5">
+                        <div class="absolute -top-16 left-1/2 h-40 w-40 -translate-x-1/2 rounded-[100%] bg-yellow-500/10 blur-[60px] pointer-events-none z-0"></div>
+                        <div class="relative z-10 flex flex-col items-center w-full">
+                            <h3 class="mb-3 text-xl md:text-2xl font-bold text-white">Level Rewards Free Coins</h3>
+                            <div class="flex items-center justify-center gap-3">
+                                <img src="assets/file_00000000e56882119c217d508b6733dc.png" alt="Coin Image" class="w-12 h-12 md:w-14 md:h-14 object-contain drop-shadow-[0_0_20px_rgba(255,215,0,0.6)]" />
+                                <p class="text-3xl md:text-5xl font-black text-yellow-500 drop-shadow-md">
+                                    <span class="counter" data-target="1000000000">0</span>+
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Row 2: 3rd Card Centered in Middle -->
-            <div class="flex justify-center">
-                <div class="relative w-full md:w-2/3 overflow-hidden rounded-[32px] bg-[#0a0a0a] p-6 text-center shadow-2xl transition hover:scale-105 flex flex-col items-center justify-center border border-white/5">
-                    <div class="absolute -top-16 left-1/2 h-40 w-40 -translate-x-1/2 rounded-[100%] bg-yellow-500/10 blur-[60px] pointer-events-none z-0"></div>
-                    <div class="relative z-10 flex flex-col items-center w-full">
-                        <h3 class="mb-3 text-xl md:text-2xl font-bold text-white">Level Rewards Free Coins</h3>
-                        <div class="flex items-center justify-center gap-3">
-                            <img src="assets/file_00000000e56882119c217d508b6733dc.png" alt="Coin Image" class="w-12 h-12 md:w-14 md:h-14 object-contain drop-shadow-[0_0_20px_rgba(255,215,0,0.6)]" />
-                            <p class="text-3xl md:text-5xl font-black text-yellow-500 drop-shadow-md">
-                                <span class="counter" data-target="1000000000">0</span>+
-                            </p>
-                        </div>
+            </section>
+
+            <!-- 3. Invite Your Friend Card (Barre Card) -->
+            <section class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-10 shadow-2xl scroll-mt-24">
+                <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[75px] pointer-events-none"></div>
+                
+                <div class="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between gap-8 text-center md:text-left">
+                    <div class="md:w-3/5">
+                        <h2 class="mb-2 text-3xl font-bold text-white md:text-4xl leading-tight">
+                            Invite Your Friend <br /> And find your Honour
+                        </h2>
+                    </div>
+                    <div class="md:w-2/5 flex justify-center md:justify-end">
+                        <img src="assets/images/IMG_20260913_205804.png" alt="Invite Friend Screen" class="object-contain rounded-2xl shadow-xl w-56" />
                     </div>
                 </div>
-            </div>
-
-        </section>
-
-        <!-- 3. Invite Your Friend Card -->
-        <section class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-10 shadow-2xl scroll-mt-24">
-            <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[75px] pointer-events-none"></div>
+            </section>
             
-            <div class="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between gap-8 text-center md:text-left">
-                <div class="md:w-3/5">
-                    <h2 class="mb-2 text-3xl font-bold text-white md:text-4xl leading-tight">
-                        Invite Your Friend <br /> And find your Honour
-                    </h2>
-                </div>
-                <div class="md:w-2/5 flex justify-center md:justify-end">
-                    <img src="assets/images/IMG_20260913_205804.png" alt="Invite Friend Screen" class="object-contain rounded-2xl shadow-xl w-56" />
-                </div>
-            </div>
-        </section>
+        </div>
+        <!-- END OF TOP SECTION GROUP -->
 
-        <!-- 4. Honour Events Card (Heading top par aur Image ekdam edge-to-edge) -->
+        <!-- 4. Honour Events Card -->
         <section class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] shadow-2xl scroll-mt-24 flex flex-col pt-8">
             <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[75px] pointer-events-none z-0"></div>
             
-            <!-- Heading Top par -->
             <div class="relative z-20 pb-6 w-full text-center px-4">
                 <h2 class="text-3xl font-bold text-white md:text-4xl">Honour Events</h2>
             </div>
             
-            <!-- Edge to Edge Image bina kisi gap ya extra background ke -->
             <div class="relative w-full z-10 mt-auto">
                 <img src="assets/file_00000000d3b4820aaa7dc8604e4044ae.png" alt="Honour Events Screen" class="w-full object-cover max-h-[400px] block" />
             </div>
