@@ -42,7 +42,7 @@
 
         /* 🎬 HURRY Letters & Plane Drop Animation */
         
-        /* Falling animation for letters */
+        /* Initial drop for letters */
         @keyframes dropLetter {
             0% {
                 opacity: 0;
@@ -54,28 +54,56 @@
             }
         }
 
+        /* Letters bouncing up one by one after being fixed */
+        @keyframes bounceUp {
+            0% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-18px);
+            }
+            70% {
+                transform: translateY(3px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
         .hurry-title {
             display: inline-flex;
             overflow: visible;
             align-items: center;
         }
 
+        .hurry-title span {
+            display: inline-block;
+        }
+
         /* 'u', 'r', 'r', 'y' dropping sequence (1 second gap each) */
         .hurry-title .letter-u {
             opacity: 0;
-            animation: dropLetter 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.4s forwards;
+            animation: 
+                dropLetter 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.4s forwards,
+                bounceUp 0.5s ease-out 7.6s forwards;
         }
         .hurry-title .letter-r1 {
             opacity: 0;
-            animation: dropLetter 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.4s forwards;
+            animation: 
+                dropLetter 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.4s forwards,
+                bounceUp 0.5s ease-out 7.85s forwards;
         }
         .hurry-title .letter-r2 {
             opacity: 0;
-            animation: dropLetter 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) 2.4s forwards;
+            animation: 
+                dropLetter 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) 2.4s forwards,
+                bounceUp 0.5s ease-out 8.1s forwards;
         }
         .hurry-title .letter-y {
             opacity: 0;
-            animation: dropLetter 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) 3.4s forwards;
+            animation: 
+                dropLetter 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) 3.4s forwards,
+                bounceUp 0.5s ease-out 8.35s forwards;
         }
 
         /* ✈️ Plane carrying 'H' - slow & clear glide across screen */
@@ -98,10 +126,10 @@
 
         .plane-container {
             position: fixed;
-            top: 75px; /* Exactly below top navbar */
+            top: 65px; /* Positioned right below top navbar */
             left: 0;
             width: 100%;
-            height: 60px;
+            height: 90px;
             z-index: 40;
             pointer-events: none;
             overflow: hidden;
@@ -111,13 +139,11 @@
             position: absolute;
             display: flex;
             align-items: center;
-            gap: 8px;
             opacity: 0;
-            /* 5.5s duration for smooth visible entrance */
             animation: flyPlaneSlow 5.5s cubic-bezier(0.25, 0.1, 0.25, 1) 4.2s forwards;
         }
 
-        /* 'H' drops perfectly when plane crosses the logo area */
+        /* 'H' drops last when plane crosses, then bounces first in chain */
         @keyframes dropH {
             0% {
                 opacity: 0;
@@ -135,8 +161,9 @@
 
         .hurry-title .letter-h {
             opacity: 0;
-            /* Synced to trigger exactly when the slow plane reaches the letter position */
-            animation: dropH 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.275) 6.4s forwards;
+            animation: 
+                dropH 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.275) 6.4s forwards,
+                bounceUp 0.5s ease-out 7.35s forwards;
         }
     </style>
 </head>
@@ -152,25 +179,14 @@
         <div class="absolute -bottom-40 left-1/2 h-[500px] w-[120vw] -translate-x-1/2 rounded-[50%] bg-blue-600/25 blur-[150px]"></div>
     </div>
 
-    <!-- ✈️ Modern White Sleek Plane flying slowly right to left -->
+    <!-- ✈️ Modern White Sleek Plane (Bigger Size) -->
     <div class="plane-container">
         <div class="flying-plane">
-            <!-- Sleek Left-facing White Jet Plane -->
-            <div class="relative flex items-center">
-                <svg class="w-10 h-10 text-white drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]" viewBox="0 0 24 24" fill="currentColor">
-                    <!-- Left facing jet craft -->
-                    <path d="M2.5 12L9 8v3l8-3.5v2L11 12l6 2.5v2L9 13v3l-6.5-4z"/>
-                    <path d="M17 10.5h4.5c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5H17v-3z" opacity="0.8"/>
-                </svg>
-                <!-- Tail Thruster Glow trailing to the right -->
-                <div class="w-8 h-[2px] bg-gradient-to-r from-white via-blue-400 to-transparent blur-[1px]"></div>
-            </div>
-
-            <!-- Mini Tag dropping H -->
-            <div class="text-[11px] text-white font-mono bg-white/10 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/30 flex items-center gap-1 shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                <span class="text-blue-400 font-bold">✈</span>
-                <span>H-Drop</span>
-            </div>
+            <!-- Big Clean White Jet Plane -->
+            <svg class="w-16 h-16 md:w-20 md:h-20 text-white drop-shadow-[0_0_18px_rgba(255,255,255,0.95)]" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M2.5 12L9 8v3l8-3.5v2L11 12l6 2.5v2L9 13v3l-6.5-4z"/>
+                <path d="M17 10.5h4.5c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5H17v-3z" opacity="0.8"/>
+            </svg>
         </div>
     </div>
 
@@ -214,7 +230,7 @@
                     <div class="flex items-center gap-5 mb-4">
                         <!-- Logo -->
                         <img src="assets/images/file_0000000084c8820b935a4144f9728544.png" alt="Hurry App" class="h-20 w-20 object-contain rounded-3xl" />
-                        <!-- Hurry Text with Plane H-drop & subsequent letters falling -->
+                        <!-- Hurry Text with Plane H-drop & subsequent bounce effect -->
                         <h1 class="text-5xl font-bold leading-tight text-white md:text-6xl hurry-title">
                             <span class="letter-h">H</span><span class="letter-u">u</span><span class="letter-r1">r</span><span class="letter-r2">r</span><span class="letter-y">y</span>
                         </h1>
