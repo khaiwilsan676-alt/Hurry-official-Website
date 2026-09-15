@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hurry - Party Rooms Chat</title>
-    <!-- Tailwind CSS for replicating the UI of the 2nd code -->
+    <!-- Tailwind CSS for replicating the UI -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800;900&display=swap" rel="stylesheet">
     <!-- Link to your original stylesheet for the blob backgrounds -->
     <link rel="stylesheet" href="styles.css">
     
     <style>
-        /* Keeping your original background aesthetic */
+        /* Body background is Pure Black */
         body {
-            background-color: #000;
+            background-color: #000000; 
             color: #fff;
             font-family: 'Poppins', sans-serif;
             margin: 0;
@@ -21,9 +21,10 @@
         }
         html {
             scroll-behavior: smooth;
+            background-color: #000000;
         }
         
-        /* If your styles.css doesn't have the blob styles defined, here is the fallback to ensure they work */
+        /* Default float blobs */
         .blob-bg {
             position: fixed;
             top: -10%;
@@ -63,14 +64,14 @@
         }
     </style>
 </head>
-<body class="min-h-screen bg-black text-white">
+<body class="min-h-screen flex flex-col">
     
     <!-- Your Original Background Theme -->
     <div class="blob-bg"></div>
     <div class="blob-bg blob-2"></div>
 
     <!-- Navbar -->
-    <header class="sticky top-0 z-50 flex items-center justify-between bg-black/10 backdrop-blur-md px-5 py-4 shadow-sm border-b border-white/5">
+    <header class="sticky top-0 z-50 flex items-center justify-between bg-black/50 backdrop-blur-md px-5 py-4 shadow-sm border-b border-white/5">
         <div class="flex items-center gap-3">
             <img src="assets/images/file_0000000084c8820b935a4144f9728544.png" alt="Hurry Logo" class="h-9 w-9 object-contain rounded-xl" />
             <span class="text-2xl font-bold tracking-wide text-white">Hurry</span>
@@ -98,7 +99,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="px-4 py-12 md:px-8 relative z-10">
+    <main class="flex-grow px-4 py-12 md:px-8 relative z-10">
         
         <!-- 1. Hero Section Card -->
         <section id="home" class="mx-auto mb-10 max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-16 shadow-2xl scroll-mt-24">
@@ -110,7 +111,6 @@
                         <img src="assets/images/file_0000000084c8820b935a4144f9728544.png" alt="Hurry App" class="h-20 w-20 object-contain rounded-3xl shadow-[0_0_40px_rgba(37,99,235,0.4)]" />
                         <h1 class="text-5xl font-bold leading-tight text-white md:text-6xl">Hurry</h1>
                     </div>
-                    <!-- Changed text to Voice Chat & Party Rooms -->
                     <h2 class="text-2xl font-light text-gray-300 md:text-4xl">Voice Chat & Party Rooms</h2>
                 </div>
 
@@ -120,7 +120,40 @@
             </div>
         </section>
 
-        <!-- 2. Invite Your Friend Card -->
+        <!-- New Section: Coins Cards (Same Row Image & Number) -->
+        <section class="mx-auto mb-10 max-w-5xl grid grid-cols-1 gap-8 md:grid-cols-2">
+            
+            <!-- 1st Card: Daily Free Coins -->
+            <div class="relative overflow-hidden rounded-[32px] bg-[#0a0a0a] p-8 text-center shadow-2xl transition hover:scale-105 flex flex-col items-center justify-center">
+                <div class="absolute -top-16 left-1/2 h-40 w-40 -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[50px] pointer-events-none z-0"></div>
+                <div class="relative z-10 flex flex-col items-center">
+                    <h3 class="mb-4 text-2xl font-bold text-white">Daily Free Coins</h3>
+                    <div class="flex items-center justify-center gap-3">
+                        <img src="assets/file_00000000e56882119c217d508b6733dc.png" alt="Coin Image" class="w-14 h-14 md:w-16 md:h-16 object-contain drop-shadow-[0_0_20px_rgba(255,215,0,0.4)]" />
+                        <p class="text-4xl md:text-5xl font-black text-blue-500 drop-shadow-md">
+                            <span class="counter" data-target="500000">0</span>+
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2nd Card: Rooms Task Free Coins -->
+            <div class="relative overflow-hidden rounded-[32px] bg-[#0a0a0a] p-8 text-center shadow-2xl transition hover:scale-105 flex flex-col items-center justify-center">
+                <div class="absolute -top-16 left-1/2 h-40 w-40 -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[50px] pointer-events-none z-0"></div>
+                <div class="relative z-10 flex flex-col items-center">
+                    <h3 class="mb-4 text-2xl font-bold text-white">Rooms Task Free Coins</h3>
+                    <div class="flex items-center justify-center gap-3">
+                        <img src="assets/file_00000000e56882119c217d508b6733dc.png" alt="Coin Image" class="w-14 h-14 md:w-16 md:h-16 object-contain drop-shadow-[0_0_20px_rgba(255,215,0,0.4)]" />
+                        <p class="text-4xl md:text-5xl font-black text-blue-500 drop-shadow-md">
+                            <span class="counter" data-target="400000">0</span>+
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Invite Your Friend Card -->
         <section class="mx-auto mb-10 max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-12 shadow-2xl scroll-mt-24">
             <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[75px] pointer-events-none"></div>
             
@@ -131,35 +164,27 @@
                     </h2>
                 </div>
                 <div class="md:w-2/5 flex justify-center md:justify-end">
-                    <!-- 3rd card ki image yahan daal di -->
                     <img src="assets/images/IMG_20260913_205804.png" alt="Invite Friend Screen" class="object-contain rounded-2xl shadow-xl w-60" />
                 </div>
             </div>
         </section>
 
-        <!-- 3. Honour Events Card -->
-        <section class="mx-auto mb-10 max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] pt-12 shadow-2xl scroll-mt-24">
-            <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[75px] pointer-events-none"></div>
+        <!-- Honour Events Card (Fully Wide & Mixed Edges in #0a0a0a) -->
+        <section class="mx-auto mb-10 max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] shadow-2xl scroll-mt-24 flex flex-col">
+            <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[75px] pointer-events-none z-0"></div>
             
-            <!-- Full wide image layout with Top Text and Top/Bottom Mixing -->
-            <div class="relative z-10 flex flex-col items-center w-full">
-                <!-- Text on Top -->
-                <h2 class="mb-8 text-4xl font-bold text-white md:text-5xl text-center px-8">Honour Events</h2>
-                
-                <div class="w-full relative">
-                    <!-- Top fade mixing -->
-                    <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-[#0a0a0a] to-transparent z-10"></div>
-                    
-                    <!-- Full width image -->
-                    <img src="assets/file_00000000d3b4820aaa7dc8604e4044ae.png" alt="Honour Events Screen" class="w-full object-cover max-h-[500px]" />
-                    
-                    <!-- Bottom fade mixing -->
-                    <div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-[#0a0a0a] to-transparent z-10"></div>
-                </div>
+            <div class="relative z-20 pt-12 pb-4 w-full text-center">
+                <h2 class="text-4xl font-bold text-white md:text-5xl">Honour Events</h2>
+            </div>
+            
+            <div class="relative w-full z-10">
+                <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent z-20"></div>
+                <img src="assets/file_00000000d3b4820aaa7dc8604e4044ae.png" alt="Honour Events Screen" class="w-full object-cover max-h-[500px]" />
+                <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent z-20"></div>
             </div>
         </section>
 
-        <!-- 4. Find Your Crowd Card -->
+        <!-- Find Your Crowd Card -->
         <section class="mx-auto mb-10 max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-12 shadow-2xl scroll-mt-24">
             <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[75px] pointer-events-none"></div>
             
@@ -174,30 +199,22 @@
                     <p class="text-lg font-medium text-white">Join Hurry and make your day!</p>
                 </div>
                 <div class="md:w-2/5 flex justify-center md:justify-end">
-                    
-                    <!-- Mobile Mockup & Scrolling Images Container -->
                     <div class="relative w-[240px] h-[480px] rounded-[2.5rem] border-[8px] border-gray-900 bg-black overflow-hidden shadow-[0_0_30px_rgba(37,99,235,0.2)] flex-shrink-0">
-                        <!-- Mobile Notch -->
                         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-6 bg-gray-900 rounded-b-2xl z-20"></div>
-                        
-                        <!-- Images Track inside mobile -->
                         <div class="absolute inset-0 w-full h-full">
                             <div class="w-full h-full flex flex-col animate-scrollMobile">
-                                <!-- Old 2nd Card image -->
                                 <img src="assets/images/file_000000009bc481fa8cddb12eb18774a1.png" alt="Slide 1" class="w-full h-full object-cover flex-shrink-0" />
-                                <!-- New Added Images -->
                                 <img src="assets/file_00000000630081f5bb3183be631ba4c1.png" alt="Slide 2" class="w-full h-full object-cover flex-shrink-0" />
                                 <img src="assets/file_000000007bdc81f8bd9d48184974a580.png" alt="Slide 3" class="w-full h-full object-cover flex-shrink-0" />
                                 <img src="assets/file_00000000be9881f5b4bc8b6aa3038dd7.png" alt="Slide 4" class="w-full h-full object-cover flex-shrink-0" />
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
 
-        <!-- 5. Key Features Card -->
+        <!-- Key Features Card -->
         <section id="feature" class="mx-auto mb-10 max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-12 shadow-2xl scroll-mt-24">
             <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[75px] pointer-events-none"></div>
             
@@ -235,7 +252,7 @@
             </div>
         </section>
 
-        <!-- 6. Community Card -->
+        <!-- Community Card -->
         <section id="about" class="mx-auto mb-16 max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-12 shadow-2xl scroll-mt-24">
             <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[75px] pointer-events-none"></div>
             
@@ -275,7 +292,6 @@
 
                     <div class="text-center transition hover:scale-105 flex flex-col items-center">
                         <div class="mb-4 flex justify-center">
-                            <!-- Performers wali image old ki jagah nayi replace kar di -->
                             <img src="assets/IMG_20260915_195447.png" alt="Performers" class="w-24 h-24 object-contain drop-shadow-[0_0_15px_rgba(37,99,235,0.4)]" />
                         </div>
                         <h4 class="mb-2 text-xl font-bold text-white">Performers</h4>
@@ -294,35 +310,67 @@
         </section>
     </main>
 
-    <!-- Footer with Bottom Glow Effect -->
-    <footer class="relative overflow-hidden pb-12 pt-16 text-center text-sm text-gray-500">
-        <!-- Watery Glow Light from bottom -->
-        <div class="absolute bottom-[-100px] left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/40 blur-[100px] pointer-events-none"></div>
-        
+    <!-- Pure Black Footer Area with Glowing Light at the Absolute Bottom -->
+    <footer class="relative w-full py-16 text-center text-sm text-gray-500 overflow-hidden mt-auto bg-black">
+        <div class="absolute bottom-[-150px] left-1/2 h-[300px] w-[100vw] -translate-x-1/2 rounded-[50%] bg-blue-600/30 blur-[100px] pointer-events-none z-0"></div>
         <div class="relative z-10">
             <p class="mb-2 transition hover:text-white">Support: Hurry@Support.com</p>
             <p>&copy; 2026 Hurry App. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Dropdown Menu Script -->
+    <!-- Script for Dropdown & Counter Animation -->
     <script>
+        // Dropdown Logic
         const menuBtn = document.getElementById('menu-btn');
         const dropdownMenu = document.getElementById('dropdown-menu');
         const menuLinks = document.querySelectorAll('.menu-link');
 
-        // Toggle menu visibility
         menuBtn.addEventListener('click', () => {
             dropdownMenu.classList.toggle('hidden');
         });
 
-        // Close menu when a link is clicked
         menuLinks.forEach(link => {
             link.addEventListener('click', () => {
                 dropdownMenu.classList.add('hidden');
             });
         });
+
+        // Animated Counter Logic
+        const counters = document.querySelectorAll('.counter');
+        const speed = 50; // The lower the speed, the faster it counts
+
+        const animateCounter = (counter) => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText.replace(/,/g, ''); // Read without commas
+
+                const inc = target / speed;
+
+                if (count < target) {
+                    // Update number with Indian comma formatting (Lakhs format)
+                    counter.innerText = Math.ceil(count + inc).toLocaleString('en-IN');
+                    setTimeout(updateCount, 25);
+                } else {
+                    counter.innerText = target.toLocaleString('en-IN');
+                }
+            };
+            updateCount();
+        };
+
+        // Trigger animation when scrolled into view
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(counter => {
+            observer.observe(counter);
+        });
     </script>
 </body>
 </html>
-
