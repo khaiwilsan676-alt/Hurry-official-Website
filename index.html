@@ -102,13 +102,13 @@
             100% { transform: translateX(-120vw); opacity: 0; }
         }
 
-        /* Container height badha di taaki barri plane fit ho jaye */
+        /* Container height badhai taaki plane niche se cut na ho */
         .plane-container {
             position: fixed;
             top: 10px;
             left: 0;
             width: 100%;
-            height: 240px;
+            height: 340px;
             z-index: 40;
             pointer-events: none;
             overflow: hidden;
@@ -143,12 +143,17 @@
             .flying-plane {
                 animation-duration: 5.5s;
             }
+            .plane-container {
+                height: 240px;
+                top: 10px;
+            }
         }
 
-        /* ===== DESKTOP ONLY: Plane thora upar ===== */
+        /* ===== DESKTOP ONLY: Plane aur upar ===== */
         @media (min-width: 768px) {
             .plane-container {
-                top: -40px;
+                top: -120px;
+                height: 340px;
             }
         }
     </style>
@@ -163,8 +168,8 @@
 
     <div class="plane-container">
         <div class="flying-plane">
-            <!-- Glow / shine hata diya gaya hai -->
-            <img src="assets/file_00000000922c82118987449e243cf0a7.png" alt="Plane" class="w-30 h-30 md:w-65 md:h-65 object-contain" />
+            <!-- Glow / shine hata diya gaya hai, plane fully visible -->
+            <img src="assets/file_00000000922c82118987449e243cf0a7.png" alt="Plane" class="w-30 h-30 md:w-70 md:h-70 object-contain" />
         </div>
     </div>
 
