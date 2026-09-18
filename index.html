@@ -45,7 +45,7 @@
             100% { transform: translateY(0); }             /* Back to Image 1 */
         }
         .animate-scrollMobile {
-            animation: scrollMobile 20s infinite ease-in-out;
+            animation: scrollMobile 20s infinite ease-in-out; 
         }
 
         /* Image Fade Mix Effect for 3rd Card */
@@ -193,14 +193,11 @@
         <div class="absolute -bottom-40 left-1/2 h-[500px] w-[120vw] -translate-x-1/2 rounded-[50%] bg-blue-600/25 blur-[150px]"></div>
     </div>
 
-    <!-- ✈️ Modern White Sleek Plane (Bigger Size) -->
+    <!-- ✈️ Modern White Sleek Plane (Image Based) -->
     <div class="plane-container">
         <div class="flying-plane">
-            <!-- Big Clean White Jet Plane -->
-            <svg class="w-16 h-16 md:w-20 md:h-20 text-white drop-shadow-[0_0_18px_rgba(255,255,255,0.95)]" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M2.5 12L9 8v3l8-3.5v2L11 12l6 2.5v2L9 13v3l-6.5-4z"/>
-                <path d="M17 10.5h4.5c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5H17v-3z" opacity="0.8"/>
-            </svg>
+            <!-- Big Clean White Jet Plane Image -->
+            <img src="/file_00000000922c82118987449e243cf0a7.png" alt="Plane" class="w-16 h-16 md:w-20 md:h-20 object-contain drop-shadow-[0_0_18px_rgba(255,255,255,0.95)]" />
         </div>
     </div>
 
@@ -462,6 +459,25 @@
                 </div>
             </div>
         </section>
+
+        <!-- 8. Plan Section (NEW - Added as per request) -->
+        <section class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-10 shadow-2xl scroll-mt-24">
+            <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[75px] pointer-events-none"></div>
+            
+            <div class="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between gap-8 text-center md:text-left">
+                <div class="md:w-3/5">
+                    <h2 class="mb-4 text-3xl font-bold text-white md:text-4xl">Plan</h2>
+                    <p class="mb-6 text-base font-light leading-relaxed text-gray-300">
+                        Choose the perfect plan for you and unlock amazing features.
+                        Enjoy unlimited voice chat, party rooms, and exclusive rewards.
+                    </p>
+                    <p class="text-base font-medium text-white">Upgrade your experience with Hurry Plans!</p>
+                </div>
+                <div class="md:w-2/5 flex justify-center md:justify-end">
+                    <img src="/file_00000000922c82118987449e243cf0a7.png" alt="Plan" class="object-contain w-72 md:w-96 rounded-2xl shadow-xl" />
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Support Footer without any background block -->
@@ -526,5 +542,4 @@
         });
     </script>
 </body>
-</html>
-
+                                </html>
