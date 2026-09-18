@@ -32,6 +32,7 @@
             background-color: #000000;
         }
 
+        /* Slow kiya: 20s -> 32s */
         @keyframes scrollMobile {
             0%, 20% { transform: translateY(0); }
             25%, 45% { transform: translateY(-100%); }
@@ -40,7 +41,7 @@
             100% { transform: translateY(0); }
         }
         .animate-scrollMobile {
-            animation: scrollMobile 20s infinite ease-in-out; 
+            animation: scrollMobile 32s infinite ease-in-out; 
         }
 
         .fade-y-mix {
@@ -113,12 +114,13 @@
             overflow: hidden;
         }
 
+        /* Slow kiya: 5.5s -> 14s */
         .flying-plane {
             position: absolute;
             display: flex;
             align-items: center;
             opacity: 0;
-            animation: flyPlaneSlow 5.5s cubic-bezier(0.25, 0.1, 0.25, 1) 4.2s forwards;
+            animation: flyPlaneSlow 14s cubic-bezier(0.25, 0.1, 0.25, 1) 4.2s forwards;
         }
 
         @keyframes dropH {
@@ -132,23 +134,6 @@
             animation: 
                 dropH 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.275) 6.4s forwards,
                 bounceUp 0.5s ease-out 7.35s forwards;
-        }
-
-        /* ✅ Plan Image Slow Fade for Desktop */
-        .plan-slow-fade {
-            animation: planSlowReveal 3s ease-in-out forwards;
-            opacity: 0;
-        }
-
-        @keyframes planSlowReveal {
-            0% {
-                opacity: 0;
-                transform: scale(0.85);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
         }
     </style>
 </head>
@@ -408,7 +393,7 @@
         </section>
 
         <!-- 8. Plan Section -->
-        <section class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-10 md:min-h-[500px] shadow-2xl scroll-mt-24">
+        <section class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-10 shadow-2xl scroll-mt-24">
             <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[75px] pointer-events-none"></div>
             
             <div class="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between gap-8 text-center md:text-left">
@@ -421,8 +406,8 @@
                     <p class="text-base font-medium text-white">Upgrade your experience with Hurry Plans!</p>
                 </div>
                 <div class="md:w-2/5 flex justify-center md:justify-end">
-                    <!-- Mobile: w-32 h-32 | Desktop: md:w-80 md:h-80 (Bada + Slow Fade) -->
-                    <img src="/file_00000000922c82118987449e243cf0a7.png" alt="Plan" class="object-contain w-32 h-32 md:w-80 md:h-80 rounded-2xl shadow-xl plan-slow-fade" />
+                    <!-- Desktop image barri ki: md:w-72 md:h-72 -->
+                    <img src="/file_00000000922c82118987449e243cf0a7.png" alt="Plan" class="object-contain w-32 h-32 md:w-72 md:h-72 rounded-2xl shadow-xl" />
                 </div>
             </div>
         </section>
