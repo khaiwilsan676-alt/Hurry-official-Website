@@ -143,6 +143,20 @@
                 animation-duration: 5.5s;
             }
         }
+
+        /* ===== PLAN IMAGE: Desktop pe barri, Mobile pe same ===== */
+        .plan-img {
+            width: 8rem;   /* 128px mobile */
+            height: 8rem;
+            object-fit: contain;
+        }
+        @media (min-width: 768px) {
+            .plan-img {
+                width: 440px;   /* Desktop pe 440px - ab pakka kaam karega */
+                height: 440px;
+                max-width: none;
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col relative">
@@ -405,7 +419,8 @@
             <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[75px] pointer-events-none"></div>
             
             <div class="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between gap-8 text-center md:text-left">
-                <div class="md:w-3/5">
+                <!-- Text ab flexible -->
+                <div class="md:flex-1">
                     <h2 class="mb-4 text-3xl font-bold text-white md:text-4xl">Plan</h2>
                     <p class="mb-6 text-base font-light leading-relaxed text-gray-300">
                         Choose the perfect plan for you and unlock amazing features.
@@ -413,9 +428,9 @@
                     </p>
                     <p class="text-base font-medium text-white">Upgrade your experience with Hurry Plans!</p>
                 </div>
-                <div class="md:w-2/5 flex justify-center md:justify-end">
-                    <!-- ✈️Desktop image aur barri: md:w-[400px] md:h-[400px] -->
-                    <img src="/file_00000000922c82118987449e243cf0a7.png" alt="Plan" class="object-contain w-32 h-32 md:w-[800px] md:h-[800px] rounded-2xl shadow-xl" />
+                <!-- Image container ab flex-shrink-0, taaki px force kaam kare -->
+                <div class="flex justify-center md:justify-end md:flex-shrink-0">
+                    <img src="/file_00000000922c82118987449e243cf0a7.png" alt="Plan" class="plan-img object-contain rounded-2xl shadow-xl" />
                 </div>
             </div>
         </section>
