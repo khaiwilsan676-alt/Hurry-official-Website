@@ -144,6 +144,13 @@
                 animation-duration: 5.5s;
             }
         }
+
+        /* ===== DESKTOP ONLY: Plane thora upar ===== */
+        @media (min-width: 768px) {
+            .plane-container {
+                top: -40px;
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col relative">
@@ -156,8 +163,8 @@
 
     <div class="plane-container">
         <div class="flying-plane">
-            <!-- Aeroplane barri ki: md:w-20 md:h-20 se -> md:w-56 md:h-56 -->
-            <img src="assets/file_00000000922c82118987449e243cf0a7.png" alt="Plane" class="w-30 h-30 md:w-70 md:h-70 object-contain drop-shadow-[0_0_18px_rgba(255,255,255,0.95)]" />
+            <!-- Glow / shine hata diya gaya hai -->
+            <img src="assets/file_00000000922c82118987449e243cf0a7.png" alt="Plane" class="w-30 h-30 md:w-65 md:h-65 object-contain" />
         </div>
     </div>
 
