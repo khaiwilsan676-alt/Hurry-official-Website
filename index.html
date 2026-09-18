@@ -8,22 +8,18 @@
     <meta name="keywords" content="Hurry, Hurry voice Chat, Hurry app, voice chat, party rooms" />
     <title>Hurry - Party Rooms Chat</title>
 
-    <!-- Favicon / Logo for Google Search -->
     <link rel="icon" href="/favicon.ico" sizes="48x48">
     <link rel="icon" href="/favicon-192.png" sizes="192x192">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <!-- Open Graph tags for better social sharing and search presentation -->
     <meta property="og:site_name" content="Hurry">
     <meta property="og:title" content="Hurry - Party Rooms Chat">
     <meta property="og:description" content="Hurry Voice Chat App - Join party rooms, chat, and share your moments.">
     <meta property="og:image" content="assets/images/file_0000000084c8820b935a4144f9728544.png">
 
-    <!-- Tailwind CSS for replicating the UI -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800;900&display=swap" rel="stylesheet">
     
     <style>
-        /* Body background is Pure Black */
         body {
             background-color: #000000; 
             color: #fff;
@@ -36,52 +32,32 @@
             background-color: #000000;
         }
 
-        /* 4th Card Mobile Scroll Animation */
         @keyframes scrollMobile {
-            0%, 20% { transform: translateY(0); }          /* Image 1 */
-            25%, 45% { transform: translateY(-100%); }     /* Image 2 */
-            50%, 70% { transform: translateY(-200%); }     /* Image 3 */
-            75%, 95% { transform: translateY(-300%); }     /* Image 4 */
-            100% { transform: translateY(0); }             /* Back to Image 1 */
+            0%, 20% { transform: translateY(0); }
+            25%, 45% { transform: translateY(-100%); }
+            50%, 70% { transform: translateY(-200%); }
+            75%, 95% { transform: translateY(-300%); }
+            100% { transform: translateY(0); }
         }
         .animate-scrollMobile {
             animation: scrollMobile 20s infinite ease-in-out; 
         }
 
-        /* Image Fade Mix Effect for 3rd Card */
         .fade-y-mix {
             -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
             mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
         }
 
-        /* 🎬 HURRY Letters & Plane Drop Animation */
-        
-        /* Initial drop for letters */
         @keyframes dropLetter {
-            0% {
-                opacity: 0;
-                transform: translateY(-40px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            0% { opacity: 0; transform: translateY(-40px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* Letters bouncing up one by one after being fixed */
         @keyframes bounceUp {
-            0% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-18px);
-            }
-            70% {
-                transform: translateY(3px);
-            }
-            100% {
-                transform: translateY(0);
-            }
+            0% { transform: translateY(0); }
+            40% { transform: translateY(-18px); }
+            70% { transform: translateY(3px); }
+            100% { transform: translateY(0); }
         }
 
         .hurry-title {
@@ -94,7 +70,6 @@
             display: inline-block;
         }
 
-        /* 'u', 'r', 'r', 'y' dropping sequence (1 second gap each) */
         .hurry-title .letter-u {
             opacity: 0;
             animation: 
@@ -120,27 +95,16 @@
                 bounceUp 0.5s ease-out 8.35s forwards;
         }
 
-        /* ✈️ Plane carrying 'H' - slow & clear glide across screen */
         @keyframes flyPlaneSlow {
-            0% {
-                transform: translateX(110vw);
-                opacity: 0;
-            }
-            8% {
-                opacity: 1;
-            }
-            92% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateX(-120vw);
-                opacity: 0;
-            }
+            0% { transform: translateX(110vw); opacity: 0; }
+            8% { opacity: 1; }
+            92% { opacity: 1; }
+            100% { transform: translateX(-120vw); opacity: 0; }
         }
 
         .plane-container {
             position: fixed;
-            top: 65px; /* Positioned right below top navbar */
+            top: 65px;
             left: 0;
             width: 100%;
             height: 90px;
@@ -157,20 +121,10 @@
             animation: flyPlaneSlow 5.5s cubic-bezier(0.25, 0.1, 0.25, 1) 4.2s forwards;
         }
 
-        /* 'H' drops last when plane crosses, then bounces first in chain */
         @keyframes dropH {
-            0% {
-                opacity: 0;
-                transform: translateY(-60px) scale(1.3);
-            }
-            65% {
-                opacity: 1;
-                transform: translateY(6px) scale(0.95);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+            0% { opacity: 0; transform: translateY(-60px) scale(1.3); }
+            65% { opacity: 1; transform: translateY(6px) scale(0.95); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         .hurry-title .letter-h {
@@ -179,36 +133,45 @@
                 dropH 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.275) 6.4s forwards,
                 bounceUp 0.5s ease-out 7.35s forwards;
         }
+
+        /* ✅ Plan Image Slow Fade for Desktop */
+        .plan-slow-fade {
+            animation: planSlowReveal 3s ease-in-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes planSlowReveal {
+            0% {
+                opacity: 0;
+                transform: scale(0.85);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col relative">
 
-    <!-- Global Gemini Glowing Theme Background -->
     <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <!-- Top Left Glow -->
         <div class="absolute -top-40 -left-40 h-[600px] w-[600px] rounded-full bg-blue-600/20 blur-[130px]"></div>
-        <!-- Middle Right Glow -->
         <div class="absolute top-1/2 -right-40 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-blue-500/15 blur-[150px]"></div>
-        <!-- Bottom Center Glow -->
         <div class="absolute -bottom-40 left-1/2 h-[500px] w-[120vw] -translate-x-1/2 rounded-[50%] bg-blue-600/25 blur-[150px]"></div>
     </div>
 
-    <!-- ✈️ Modern White Sleek Plane (Image Based) -->
     <div class="plane-container">
         <div class="flying-plane">
-            <!-- Big Clean White Jet Plane Image -->
-            <img src="assets/file_00000000922c82118987449e243cf0a7.png" alt="Plane" class="w-30 h-30 md:w-40 md:h-40 object-contain drop-shadow-[0_0_18px_rgba(255,255,255,0.95)]" />
+            <img src="assets/file_00000000922c82118987449e243cf0a7.png" alt="Plane" class="w-30 h-30 md:w-20 md:h-20 object-contain drop-shadow-[0_0_18px_rgba(255,255,255,0.95)]" />
         </div>
     </div>
 
-    <!-- Navbar -->
     <header class="sticky top-0 z-50 flex items-center justify-between bg-black/50 backdrop-blur-md px-5 py-4 shadow-sm border-b border-white/5">
         <div class="flex items-center gap-3">
             <img src="assets/images/file_0000000084c8820b935a4144f9728544.png" alt="Hurry Logo" class="h-9 w-9 object-contain rounded-xl" />
             <span class="text-2xl font-bold tracking-wide text-white">Hurry</span>
         </div>
 
-        <!-- Menu Button and Dropdown -->
         <div class="relative">
             <button id="menu-btn" aria-label="Menu" class="text-white transition hover:scale-110">
                 <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -218,7 +181,6 @@
                 </svg>
             </button>
 
-            <!-- Dropdown Box -->
             <div id="dropdown-menu" class="hidden absolute right-0 mt-4 flex w-40 flex-col overflow-hidden rounded-2xl border border-gray-800 bg-[#0a0a0a] shadow-[0_0_20px_rgba(0,0,0,0.8)]">
                 <a href="#home" class="menu-link px-5 py-3 text-sm font-medium text-gray-300 transition hover:bg-[#141414] hover:text-blue-600">Home</a>
                 <div class="h-[1px] w-full bg-gray-800/50"></div>
@@ -229,19 +191,15 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="flex-grow px-4 py-8 md:px-8 relative z-10 flex flex-col gap-6">
         
-        <!-- 1. Hero Section Card with Plane H-Drop & Letters Falling Animation -->
         <section id="home" class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-12 shadow-2xl scroll-mt-24">
             <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/30 blur-[75px] pointer-events-none"></div>
             
             <div class="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between gap-8 text-center md:text-left">
                 <div class="md:w-1/2 flex flex-col items-center md:items-start">
                     <div class="flex items-center gap-5 mb-4">
-                        <!-- Logo -->
                         <img src="assets/images/file_0000000084c8820b935a4144f9728544.png" alt="Hurry App" class="h-20 w-20 object-contain rounded-3xl" />
-                        <!-- Hurry Text with Plane H-drop & subsequent bounce effect -->
                         <h1 class="text-5xl font-bold leading-tight text-white md:text-6xl hurry-title">
                             <span class="letter-h">H</span><span class="letter-u">u</span><span class="letter-r1">r</span><span class="letter-r2">r</span><span class="letter-y">y</span>
                         </h1>
@@ -249,18 +207,14 @@
                     <h2 class="text-2xl font-light text-gray-300 md:text-4xl">Voice Chat & Party Rooms</h2>
                 </div>
 
-                <!-- Right Side Image -->
                 <div class="md:w-1/2 flex justify-center md:justify-end">
                     <img src="assets/images/file_00000000d60081fa99e9262352f29b19.png" alt="Hurry App Screen" class="object-contain rounded-2xl shadow-xl w-72 md:w-96" />
                 </div>
             </div>
         </section>
 
-        <!-- 2. 3 Coins Cards Section -->
         <section class="mx-auto w-full max-w-5xl flex flex-col gap-6">
-            <!-- Row 1: Two Cards -->
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-                <!-- 1st Card: Daily Free Coins -->
                 <div class="relative overflow-hidden rounded-[32px] bg-[#0a0a0a] p-6 text-center shadow-2xl transition hover:scale-105 flex flex-col items-center justify-center">
                     <div class="absolute -top-16 left-1/2 h-40 w-40 -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[50px] pointer-events-none z-0"></div>
                     <div class="relative z-10 flex flex-col items-center w-full">
@@ -274,7 +228,6 @@
                     </div>
                 </div>
 
-                <!-- 2nd Card: Rooms Task Free Coins -->
                 <div class="relative overflow-hidden rounded-[32px] bg-[#0a0a0a] p-6 text-center shadow-2xl transition hover:scale-105 flex flex-col items-center justify-center">
                     <div class="absolute -top-16 left-1/2 h-40 w-40 -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[50px] pointer-events-none z-0"></div>
                     <div class="relative z-10 flex flex-col items-center w-full">
@@ -289,7 +242,6 @@
                 </div>
             </div>
 
-            <!-- Row 2: 3rd Card Centered in Middle -->
             <div class="flex justify-center">
                 <div class="relative w-full md:w-2/3 overflow-hidden rounded-[32px] bg-[#0a0a0a] p-6 text-center shadow-2xl transition hover:scale-105 flex flex-col items-center justify-center border border-white/5">
                     <div class="absolute -top-16 left-1/2 h-40 w-40 -translate-x-1/2 rounded-[100%] bg-yellow-500/10 blur-[60px] pointer-events-none z-0"></div>
@@ -306,7 +258,6 @@
             </div>
         </section>
 
-        <!-- 3. Invite Your Friend Card -->
         <section class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-10 shadow-2xl scroll-mt-24">
             <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[75px] pointer-events-none"></div>
             
@@ -322,7 +273,6 @@
             </div>
         </section>
         
-        <!-- 4. Honour Events Card -->
         <section class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] shadow-2xl scroll-mt-24 flex flex-col pt-8">
             <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[75px] pointer-events-none z-0"></div>
             
@@ -335,7 +285,6 @@
             </div>
         </section>
 
-        <!-- 5. Find Your Crowd Card -->
         <section class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-10 shadow-2xl scroll-mt-24">
             <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[75px] pointer-events-none"></div>
             
@@ -365,7 +314,6 @@
             </div>
         </section>
 
-        <!-- 6. Key Features Card -->
         <section id="feature" class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-10 shadow-2xl scroll-mt-24">
             <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[75px] pointer-events-none"></div>
             
@@ -403,7 +351,6 @@
             </div>
         </section>
 
-        <!-- 7. Community Card -->
         <section id="about" class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-10 shadow-2xl scroll-mt-24">
             <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[75px] pointer-events-none"></div>
             
@@ -460,8 +407,8 @@
             </div>
         </section>
 
-        <!-- 8. Plan Section (NEW - Added as per request) -->
-        <section class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-10 shadow-2xl scroll-mt-24">
+        <!-- 8. Plan Section -->
+        <section class="mx-auto w-full max-w-5xl overflow-hidden relative rounded-[32px] bg-[#0a0a0a] p-8 md:p-10 md:min-h-[500px] shadow-2xl scroll-mt-24">
             <div class="absolute -top-32 left-1/2 h-64 w-[150%] -translate-x-1/2 rounded-[100%] bg-blue-600/20 blur-[75px] pointer-events-none"></div>
             
             <div class="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between gap-8 text-center md:text-left">
@@ -474,14 +421,13 @@
                     <p class="text-base font-medium text-white">Upgrade your experience with Hurry Plans!</p>
                 </div>
                 <div class="md:w-2/5 flex justify-center md:justify-end">
-                    <!-- Mobile: w-32 h-32 | Desktop: md:w-32 md:h-32 -->
-                    <img src="/file_00000000922c82118987449e243cf0a7.png" alt="Plan" class="object-contain w-32 h-32 md:w-32 md:h-32 rounded-2xl shadow-xl" />
+                    <!-- Mobile: w-32 h-32 | Desktop: md:w-80 md:h-80 (Bada + Slow Fade) -->
+                    <img src="/file_00000000922c82118987449e243cf0a7.png" alt="Plan" class="object-contain w-32 h-32 md:w-80 md:h-80 rounded-2xl shadow-xl plan-slow-fade" />
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Support Footer without any background block -->
     <footer class="relative w-full py-16 text-center text-sm text-gray-400 mt-auto bg-transparent z-10">
         <div class="relative flex flex-col items-center gap-2">
             <p class="text-base font-medium text-white tracking-wide transition hover:text-blue-400">Support: Hurry@Support.com</p>
@@ -489,9 +435,7 @@
         </div>
     </footer>
 
-    <!-- Script for Dropdown & Counter Animation -->
     <script>
-        // Dropdown Logic
         const menuBtn = document.getElementById('menu-btn');
         const dropdownMenu = document.getElementById('dropdown-menu');
         const menuLinks = document.querySelectorAll('.menu-link');
@@ -506,19 +450,16 @@
             });
         });
 
-        // Animated Counter Logic
         const counters = document.querySelectorAll('.counter');
-        const speed = 60; // Adjust for smoothness
+        const speed = 60;
 
         const animateCounter = (counter) => {
             const updateCount = () => {
                 const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText.replace(/,/g, ''); // Read without commas
-
+                const count = +counter.innerText.replace(/,/g, '');
                 const inc = target / speed;
 
                 if (count < target) {
-                    // Update number with international comma format
                     counter.innerText = Math.ceil(count + inc).toLocaleString('en-US');
                     setTimeout(updateCount, 25);
                 } else {
@@ -528,12 +469,11 @@
             updateCount();
         };
 
-        // Trigger animation when scrolled into view
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     animateCounter(entry.target);
-                    observer.unobserve(entry.target); // Stop observing once animated
+                    observer.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.5 });
@@ -543,4 +483,4 @@
         });
     </script>
 </body>
-    </html>
+</html>
